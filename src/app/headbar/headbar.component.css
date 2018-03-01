@@ -1,0 +1,5 @@
+/**
+ * <headbar> component
+ * Simple Headbar
+ */
+.headbar { display: flex; justify-content: center; width: 100%; height: 55px; background: white; border-bottom: 1px solid #eaeaea;}

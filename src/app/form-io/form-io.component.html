@@ -1,0 +1,23 @@
+<div class="form_io">
+  <h2>{{api.name}}</h2>
+  <div class="columns gap_big">
+    <div class="column c50">
+
+      <div *ngFor="let input of api.inputs" class="line ck_input active">
+        <label for="address_getUserByAddress">{{input.name}}</label>
+        <input type="text" id="address_getUserByAddress" name="" value="" spellcheck="false">
+      </div>
+      <div class="btn color_btn" onclick="API.getUserByAddress($('#address_getUserByAddress').val(), $('#userxp_getUserByAddress'), $('#perks_getUserByAddress'));">Get User By Address</div>
+    </div>
+    <div class="column c50">
+      <div class="line ck_input active readonly">
+        <label for="userxp_getUserByAddress">User XP</label>
+        <input type="text" id="userxp_getUserByAddress" readonly="">
+      </div>
+      <div class="line ck_input active readonly">
+        <label for="perks_getUserByAddress">Perks</label>
+        <input type="text" id="perks_getUserByAddress" readonly="">
+      </div>
+    </div>
+  </div>
+</div>
