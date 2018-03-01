@@ -1,9 +1,9 @@
 <div class="form_io">
-  <h2>{{api.name}}</h2>
+  <h2>{{formdata.name}}</h2>
   <div class="columns gap_big">
     <div class="column c50">
-
-      <div *ngFor="let input of api.inputs" class="line ck_input active">
+      <div class="line ck_input active"
+          *ngFor="let input of formdata.inputs">
         <label for="address_getUserByAddress">{{input.name}}</label>
         <input type="text" id="address_getUserByAddress" name="" value="" spellcheck="false">
       </div>

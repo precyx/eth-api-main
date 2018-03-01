@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-form-io',
@@ -6,8 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-io.component.css']
 })
 export class FormIoComponent implements OnInit {
-
-  api:Object = {"constant":false,"inputs":[{"name":"_subtypeIndexToDeprecate","type":"uint8"}],"name":"deprecateDefenceSubtype","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"};
+  @Input() formdata:Object;
 
   constructor() { }
 
