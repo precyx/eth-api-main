@@ -2,22 +2,21 @@
   <h2>{{formdata.name}}</h2>
   <div class="columns gap_big">
     <div class="column c50">
-      <div class="line ck_input active"
-          *ngFor="let input of formdata.inputs">
-        <label for="address_getUserByAddress">{{input.name}}</label>
-        <input type="text" id="address_getUserByAddress" name="" value="" spellcheck="false">
+      <div *ngFor="let input of formdata.inputs">
+        <app-kiko-form-field
+          [id]="input.name + '_' + formdata.name"
+          [label]="input.name +' ('+input.type+')'"
+          [value]="'testvalue'">
+        </app-kiko-form-field>
       </div>
       <div class="btn color_btn" onclick="API.getUserByAddress($('#address_getUserByAddress').val(), $('#userxp_getUserByAddress'), $('#perks_getUserByAddress'));">Get User By Address</div>
     </div>
     <div class="column c50">
-      <div class="line ck_input active readonly">
-        <label for="userxp_getUserByAddress">User XP</label>
-        <input type="text" id="userxp_getUserByAddress" readonly="">
-      </div>
-      <div class="line ck_input active readonly">
-        <label for="perks_getUserByAddress">Perks</label>
-        <input type="text" id="perks_getUserByAddress" readonly="">
-      </div>
+      <app-kiko-form-field
+        [id]="'output_' + formdata.name"
+        [label]="'output'"
+        [disable]="'disable'">
+      </app-kiko-form-field>
     </div>
   </div>
 </div>

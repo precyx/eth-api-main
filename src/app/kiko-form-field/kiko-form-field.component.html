@@ -1,0 +1,9 @@
+<div class="line ck_input {{disable_text}} {{active}}">
+
+  <label for="{{id}}">{{label}}</label>
+  <input type="text" id="{{id}}" name="" value="{{value}}" spellcheck="false"
+  [attr.disabled]="disabled?'':null"
+  (focus)="onFocus($event)"
+  (focusout)="onFocusOut($event)">
+
+</div>
