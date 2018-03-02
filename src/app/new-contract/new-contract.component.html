@@ -1,0 +1,29 @@
+<div class="newContractInterface">
+  <h1>Create New Contract Interface</h1>
+
+  <div class="columns">
+    <div class="column c50">
+      <mat-form-field class="example-full-width">
+        <input matInput id="contractname_newContractInterface" placeholder="Contract Name" value="">
+      </mat-form-field>
+    </div>
+    <div class="column c50">
+      <mat-form-field class="example-full-width">
+        <input matInput id="contractaddress_newContractInterface" placeholder="Owner Address" value="">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <mat-form-field class="example-full-width">
+    <textarea matInput id="contractAbi_newContractInterface" placeholder="Contract ABI" value=""></textarea>
+  </mat-form-field>
+
+  <div class="bottombar">
+    <div class="color_btn secondary btn close" (click)="closeContract()">
+      Close
+    </div>
+    <div class="color_btn btn create_new" (click)="createContract()">
+      Create Contract
+    </div>
+  </div>
+</div>

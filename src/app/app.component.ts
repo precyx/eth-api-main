@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  showNewContract:boolean = false;
+
+  newContract():void{
+    console.log("add new contract");
+    this.showNewContract = true;
+  }
+
+  setShowNewContract = function(b:boolean){
+    this.showNewContract = b;
+  }
 }

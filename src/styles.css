@@ -23,6 +23,9 @@ transition: all 0.2s ease; }
 .mainnav {display: flex; margin-bottom: 60px;}
 .mainnav .btn {margin-right: 10px;}
 
+.add_contract_btn { position: fixed; width: 80px; height: 80px; background: #ff3865; -webkit-box-shadow: 0 2px 2px black; box-shadow: 0 4px 12px #0000003b; right: 90px; bottom: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; color: white; user-select:none; font-size: 36px; font-weight: normal; cursor: pointer;}
+.add_contract_btn:hover { background:#ff6487;}
+
 /* Material Override */
 .form_io .mat-form-field-underline { background-color: rgba(0, 0, 0, 0.14);}
 /*.form_io .mat-form-field-label {font-size: 14px; font-family: arial; font-weight: normal; color: rgba(0, 0, 0, 0.64);}

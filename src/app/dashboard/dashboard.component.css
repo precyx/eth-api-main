@@ -1,5 +1,6 @@
 /* io_list */
 .io_list {display: flex; flex-wrap: wrap; }
 /* io_elem */
-.io_elem {margin-right: 10px; margin-bottom: 10px;}
+.io_elem {margin-right: 10px; margin-bottom: 10px; border-radius: 50px;}
 .io_elem .notconstant {border: 1px solid #d43535; border-radius: 11px; color: #d43535; padding: 2px 0px; width: 22px; display: inline-flex; align-items: center; justify-content: center; text-align: center; font-size: 11px; margin-left: 5px;}
+.io_elem .type_event {border: 1px solid #478bec; border-radius: 11px; color: #478bec; padding: 2px 0px; width: 22px; display: inline-flex; align-items: center; justify-content: center; text-align: center; font-size: 11px; margin-left: 5px;}

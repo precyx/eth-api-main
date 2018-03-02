@@ -10,5 +10,6 @@
      [ngClass]="{'notconstant' : io.constant==false }">
     {{io.name}}
     <div *ngIf="io.constant == false" class="notconstant">M</div>
+    <div *ngIf="io.type == 'event'" class="type_event">E</div>
   </a>
 </div>

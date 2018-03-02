@@ -29,4 +29,15 @@ export class FormIoComponent implements OnInit {
     return index; // or item.id
   }
 
+
+  clickButton():void {
+    /*var Contract = "get.Contract";
+    var OutputDom = "get.Outputdom";
+    Contract["functionName"](param1, param2, function(err, res){
+      output("functionname ", err, res);
+      var result = parseResult(res);
+      OutputDom.val(result)
+    });*/
+  }
+
 }

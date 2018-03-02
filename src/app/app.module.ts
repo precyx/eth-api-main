@@ -11,8 +11,10 @@ import { KikoFormFieldComponent }   from './kiko-form-field/kiko-form-field.comp
 
 import { MatInputModule }           from '@angular/material';
 import { DataService }              from './data.service';
+import { CommunicationService }     from './communication.service';
 import { AppRoutingModule }         from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NewContractComponent } from './new-contract/new-contract.component';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HeadbarComponent,
     FormIoListComponent,
     KikoFormFieldComponent,
-    DashboardComponent
+    DashboardComponent,
+    NewContractComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatInputModule
   ],
   providers: [
-    DataService
+    DataService,
+    CommunicationService
   ],
   bootstrap: [AppComponent]
 })

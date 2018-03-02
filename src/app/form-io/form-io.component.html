@@ -6,7 +6,7 @@
   <h1>{{io.name}}</h1>
 </div>
 
-<div class="form_io" [ngClass]="{'notconstant':io.constant==false}">
+<div class="form_io" [ngClass]="{'notconstant':io.constant==false, 'type_event':io.type=='event'}">
   <h2>{{io.name}}()</h2>
   <div class="columns gap_big">
     <div class="column c50">
@@ -17,7 +17,9 @@
         </mat-form-field>
 
       </div>
-      <div class="btn color_btn" onclick="API.getUserByAddress($('#address_getUserByAddress').val(), $('#userxp_getUserByAddress'), $('#perks_getUserByAddress'));">Get User By Address</div>
+      <div class="btn color_btn" onclick="API.getUserByAddress($('#address_getUserByAddress').val(), $('#userxp_getUserByAddress'), $('#perks_getUserByAddress'));">
+        {{io.name}}
+      </div>
     </div>
     <div class="column c50">
 
