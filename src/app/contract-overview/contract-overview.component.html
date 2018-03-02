@@ -1,0 +1,10 @@
+<h1>Contracts</h1>
+<div class="contracts">
+  <a class="contract tile_btn"
+       *ngFor="let contract of contracts"
+       routerLink="{{contract.url}}">
+       <div class="name">
+         {{contract.name}}
+       </div>
+  </a>
+</div>

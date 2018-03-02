@@ -39,6 +39,10 @@ export class FormIoComponent implements OnInit {
     return index; // or item.id
   }
 
+  goBack():void{
+    this.location.back();
+  }
+
 
   clickButton():void {
     /*var Contract = "get.Contract";

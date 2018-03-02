@@ -7,8 +7,3 @@
 .form_io.notconstant h2 {color: #fd4848;}
 .form_io.type_event h2 {color: #478bec;}
 .form_io .example-full-width {width:100%; max-width:400px;}
-
-.titlebar {display: flex; align-items: center; margin-bottom: 30px;}
-.titlebar h1 {margin:0;}
-.back_btn { background: white; margin-right: 20px; box-shadow: 0 2px 4px #00000054; width: 40px; height: 40px; font-size: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: normal; color: #1c92e8;}
-.back_btn:hover { background: #f7f7f7; }

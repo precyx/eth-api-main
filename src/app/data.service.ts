@@ -21,6 +21,12 @@ export class DataService {
   contractName:string = "EtherbotsCore";
   contractAddress:string = "0x8063a39dd357165e04f12431ff3d67a5c9d3b7b4";
 
+
+  contracts:object[] = [
+    {name:'Aethia Marketplace', url:'aethia-marketplace', address:'0x000', abi:this.aethia_marketplace_abi},
+    {name:'Etherbots Core', url:'etherbots-core', address:'0x001', abi:this.etherbots_core_abi}
+  ];
+
   /* selected data is gonna be displayed */
   SELECTED_DATA:Object[] = this.etherbots_core_abi;
 
@@ -34,6 +40,16 @@ export class DataService {
       return this.SELECTED_DATA.find(function(elem, index){
         return index == id;
       });
+  }
+
+  getContracts():object[]{
+    return this.contracts;
+  }
+
+  getContractByName(name:string):object{
+    return this.contracts.find(function(elem, index){
+      return name == elem.url;
+    });
   }
 
 }

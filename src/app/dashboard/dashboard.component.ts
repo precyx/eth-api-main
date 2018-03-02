@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService }       from '../data.service';
+import { ActivatedRoute }    from '@angular/router';
+import { Location }          from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,22 +10,26 @@ import { DataService }       from '../data.service';
 })
 export class DashboardComponent implements OnInit {
 
-  data:Object;
+  contract:any;
+  contract_abi:Object[];
 
-  constructor(private dataService:DataService) { }
+  constructor(
+    private dataService:DataService,
+    private route:ActivatedRoute,
+    private location:Location) { }
 
-  ngOnInit() {
-    this.data = this.dataService.getData();
+    ngOnInit() {
+      this.getContract();
+    }
 
-    // init web3
-    /*web3 = new Web3();
-    window.console.log(web3);
-    //var web3 = new Web3(web3.currentProvider);
-    this.contract = web3.eth.contract(dataService.etherbots_core_abi).at(dataService.contractAddress);*/
-  }
+    getContract(){
+      var name = this.route.snapshot.paramMap.get('name');
+      this.contract = this.dataService.getContractByName(name);
+      this.contract_abi = this.contract.abi;
+    }
 
-  public get getElems() {
-     return this.data;
-  }
+    goBack():void{
+      this.location.back();
+    }
 
 }

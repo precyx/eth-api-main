@@ -1,5 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef, NgZone, ApplicationRef } from '@angular/core';
-import { DataService }       from '../data.service';
+import { Component, OnInit }        from '@angular/core';
+import { DataService }              from '../data.service';
+import { ActivatedRoute }           from '@angular/router';
+import { Location }                 from '@angular/common';
 
 @Component({
   selector: 'app-form-io-list',
@@ -8,38 +10,21 @@ import { DataService }       from '../data.service';
 })
 export class FormIoListComponent implements OnInit {
 
-  data:Object = this.dataService.getData();
-  start:number = 1;
-  numElems:number = 3;
+  contract:Object;
 
   constructor(
     private dataService:DataService,
-    private changeDetectorRef:ChangeDetectorRef,
-    private ngZone:NgZone,
-    private applicationRef:ApplicationRef) {}
+    private route:ActivatedRoute,
+    private location:Location) {}
 
   ngOnInit() {
+    this.getContract();
   }
 
-  onPaginationChange(event){
-    console.log(event);
-    //this.changeDetectorRef.detectChanges();
-    //this.ngZone.run(function(){});
-    //this.applicationRef.tick();
+  getContract(){
+    var name = +this.route.snapshot.paramMap.get('name');
+    this.contract = this.dataService.getContractByName(name);
   }
-
-  trackByFn(index, item) {
-    return index; // or item.id
-  }
-
-  public get getElems() {
-     this.data;
-  }
-
-  between(val, min, max){
-    return val > min && val < max;
-  }
-
 
 
 }

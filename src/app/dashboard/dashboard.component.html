@@ -1,12 +1,14 @@
-
 <div class="titlebar">
-  <h1>Abi functions ({{data.length}})</h1>
+  <a (click)="goBack()" class="back_btn">
+    <
+  </a>
+  <h1>Abi functions ({{contract_abi.length}})</h1>
 </div>
 
 <div class="io_list">
   <a class="io_elem tile_btn"
-     *ngFor="let io of data; let i = index"
-     routerLink="/detail/{{i}}"
+     *ngFor="let io of contract_abi; let i = index"
+     routerLink="fn/{{i}}"
      [ngClass]="{'notconstant' : io.constant==false }">
     {{io.name}}
     <div *ngIf="io.constant == false" class="notconstant">M</div>

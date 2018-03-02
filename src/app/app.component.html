@@ -1,15 +1,13 @@
 <app-headbar></app-headbar>
 <div class="main">
-
-  <div class="mainnav" *ngIf="false">
-    <div class="ghost_btn btn">ABI Parser</div>
-    <div class="ghost_btn btn">Demo Contract</div>
+  <div class="mainnav" *ngIf="true">
+    <div routerLink="/main" class="ghost_btn grey btn">All Contracts</div>
   </div>
   <div class="mainview">
     <router-outlet></router-outlet>
   </div>
-
 </div>
+
 
 <div class="add_contract_btn" (click)="newContract()">
   +
