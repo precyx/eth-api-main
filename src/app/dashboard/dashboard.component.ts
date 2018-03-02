@@ -14,6 +14,12 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.data = this.dataService.getData();
+
+    // init web3
+    /*web3 = new Web3();
+    window.console.log(web3);
+    //var web3 = new Web3(web3.currentProvider);
+    this.contract = web3.eth.contract(dataService.etherbots_core_abi).at(dataService.contractAddress);*/
   }
 
   public get getElems() {

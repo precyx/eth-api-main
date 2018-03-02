@@ -11,6 +11,7 @@ import { KikoFormFieldComponent }   from './kiko-form-field/kiko-form-field.comp
 
 import { MatInputModule }           from '@angular/material';
 import { DataService }              from './data.service';
+import { Web3Service }              from './web3.service';
 import { CommunicationService }     from './communication.service';
 import { AppRoutingModule }         from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -39,7 +40,8 @@ import { NewContractComponent } from './new-contract/new-contract.component';
   ],
   providers: [
     DataService,
-    CommunicationService
+    CommunicationService,
+    Web3Service
   ],
   bootstrap: [AppComponent]
 })
