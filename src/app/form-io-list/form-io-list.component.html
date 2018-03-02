@@ -15,15 +15,6 @@
 </div>
 
 
-<h2>Abi functions ({{getElems.length}})</h2>
-<div class="class_abi_names">
-  <div class="abi_name tile_btn"
-    *ngFor="let elem of getElems">
-    {{elem.name}}
-  </div>
-</div>
-
 <div class="form_io_elems"
       *ngFor="let elem of getElems">
-  <app-form-io [formdata]='elem'></app-form-io>
 </div>

@@ -33,8 +33,7 @@ export class FormIoListComponent implements OnInit {
   }
 
   public get getElems() {
-     var filtered =  this.data.filter((item, index) => index > this.start );
-     return filtered;
+     this.data;
   }
 
   between(val, min, max){

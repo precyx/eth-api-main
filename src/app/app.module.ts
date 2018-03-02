@@ -11,7 +11,8 @@ import { KikoFormFieldComponent }   from './kiko-form-field/kiko-form-field.comp
 
 import { MatInputModule }           from '@angular/material';
 import { DataService }              from './data.service';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule }         from './/app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AppRoutingModule } from './/app-routing.module';
     FormIoComponent,
     HeadbarComponent,
     FormIoListComponent,
-    KikoFormFieldComponent
+    KikoFormFieldComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
