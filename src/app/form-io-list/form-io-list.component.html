@@ -1,4 +1,29 @@
+
+<div class="section" *ngIf="false">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Page" value=""
+    [(ngModel)]="start"
+    (change)="onPaginationChange($event)">
+  </mat-form-field>
+
+  <div class="">
+    start: {{start}}
+  </div>
+  <div class="">
+    numElems: {{numElems}}
+  </div>
+</div>
+
+
+<h2>Abi functions ({{getElems.length}})</h2>
+<div class="class_abi_names">
+  <div class="abi_name tile_btn"
+    *ngFor="let elem of getElems">
+    {{elem.name}}
+  </div>
+</div>
+
 <div class="form_io_elems"
-      *ngFor="let elem of elems">
+      *ngFor="let elem of getElems">
   <app-form-io [formdata]='elem'></app-form-io>
 </div>

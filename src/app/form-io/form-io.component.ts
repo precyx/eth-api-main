@@ -13,4 +13,8 @@ export class FormIoComponent implements OnInit {
   ngOnInit() {
   }
 
+  trackByFn(index, item) {
+    return index; // or item.id
+  }
+
 }
