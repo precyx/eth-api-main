@@ -3,20 +3,17 @@
   <div class="columns gap_big">
     <div class="column c50">
       <div *ngFor="let input of formdata.inputs">
-        <app-kiko-form-field
-          [id]="input.name + '_' + formdata.name"
-          [label]="input.name +' ('+input.type+')'"
-          [value]="'testvalue'">
-        </app-kiko-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput id="{{input.name}}_{{formdata.name}}" placeholder="{{input.name}} ({{input.type}})" value="">
+        </mat-form-field>
+
       </div>
       <div class="btn color_btn" onclick="API.getUserByAddress($('#address_getUserByAddress').val(), $('#userxp_getUserByAddress'), $('#perks_getUserByAddress'));">Get User By Address</div>
     </div>
     <div class="column c50">
-      <app-kiko-form-field
-        [id]="'output_' + formdata.name"
-        [label]="'output'"
-        [disable]="'disable'">
-      </app-kiko-form-field>
+      <mat-form-field class="example-full-width">
+        <textarea matInput disabled id="output_{{formdata.name}}" placeholder="output" value=""></textarea>
+      </mat-form-field>
     </div>
   </div>
 </div>
