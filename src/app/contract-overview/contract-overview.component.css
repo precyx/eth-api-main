@@ -1,2 +1,5 @@
 .contracts {margin-bottom: 40px;}
 .contract {margin-right: 10px;}
+.contract .network {display: flex; margin-left: 5px; font-weight: bold;}
+.contract .network.mainnet:after { content: "M"; color:#038789;  }
+.contract .network.rinkeby:after { content: "R"; color:#EBB33F;  }
