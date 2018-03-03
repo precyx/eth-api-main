@@ -21,7 +21,7 @@
 <div class="io_list">
   <a class="io_elem tile_btn"
      *ngFor="let io of contract_abi; let i = index"
-     routerLink="fn/{{i}}"
+     routerLink="fn/{{io.id}}"
      [ngClass]="{'notconstant' : io.constant==false }">
     {{io.name}}
     <div *ngIf="io.constant == false" class="notconstant">M</div>

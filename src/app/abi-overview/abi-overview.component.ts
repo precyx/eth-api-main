@@ -30,7 +30,12 @@ export class AbiOverviewComponent implements OnInit {
     getContractAbi(){
       var name = this.route.snapshot.paramMap.get('name');
       this.contract = this.dataService.getContractByName(name);
-      this.contract_abi = this.contract.abi;
+      // append ID for routing
+      var c:any = this.contract.abi;
+      for(var i = 0; i < c.length; i++){
+        c[i].id = i;
+      }
+      this.contract_abi = c;
     }
 
     goBack():void{
@@ -44,7 +49,7 @@ export class AbiOverviewComponent implements OnInit {
       //this.getContractAbi();
       var filtered:Array<object> = [];
       for(var i = this.contract_abi.length-1; i>=0; i--){
-        var elem = this.contract_abi[i];
+        var elem:any = this.contract_abi[i];
         //
         if(elem.type == "event") {continue;}
         if(elem.constant == false) {continue;}
