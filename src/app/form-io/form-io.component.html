@@ -3,28 +3,28 @@
   <a (click)="goBack()" class="back_btn">
     <
   </a>
-  <h1>{{io.name}}</h1>
+  <h1>{{abi_function.name}}</h1>
 </div>
 
-<div class="form_io" [ngClass]="{'notconstant':io.constant==false, 'type_event':io.type=='event'}">
-  <h2>{{io.name}}()</h2>
+<div class="form_io" [ngClass]="{'notconstant':abi_function.constant==false, 'type_event':abi_function.type=='event'}">
+  <h2>{{abi_function.name}}()</h2>
   <div class="columns gap_big">
     <div class="column c50">
-      <div *ngFor="let input of io.inputs; trackBy index">
+      <div *ngFor="let input of abi_function.inputs; trackBy index">
 
         <mat-form-field class="example-full-width">
-          <input matInput id="{{input.name}}_{{io.name}}" placeholder="{{input.name}} ({{input.type}})" value="">
+          <input matInput id="{{input.name}}_{{abi_function.name}}" placeholder="{{input.name}} ({{input.type}})" value="">
         </mat-form-field>
 
       </div>
       <div class="btn color_btn" onclick="API.getUserByAddress($('#address_getUserByAddress').val(), $('#userxp_getUserByAddress'), $('#perks_getUserByAddress'));">
-        {{io.name}}
+        {{abi_function.name}}
       </div>
     </div>
     <div class="column c50">
 
       <mat-form-field class="example-full-width">
-        <textarea matInput disabled id="output_{{io.name}}" placeholder="output" value=""></textarea>
+        <textarea matInput disabled id="output_{{abi_function.name}}" placeholder="output" value=""></textarea>
       </mat-form-field>
 
     </div>
