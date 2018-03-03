@@ -5,11 +5,11 @@ import { Location }          from '@angular/common';
 import { Contract }          from '../classes/Contract';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-abi-overview',
+  templateUrl: './abi-overview.component.html',
+  styleUrls: ['./abi-overview.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class AbiOverviewComponent implements OnInit {
 
   contract:Contract;
   contract_abi:Array<object>;

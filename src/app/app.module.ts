@@ -4,7 +4,7 @@ import { BrowserAnimationsModule }    from '@angular/platform-browser/animations
 import { FormsModule }                from '@angular/forms';
 
 import { AppComponent }               from './app.component';
-import { FormIoComponent }          from './form-io/form-io.component';
+import { FormIoComponent }            from './form-io/form-io.component';
 import { HeadbarComponent }           from './headbar/headbar.component';
 import { FormIoListComponent }        from './form-io-list/form-io-list.component';
 import { KikoFormFieldComponent }     from './kiko-form-field/kiko-form-field.component';
@@ -13,8 +13,8 @@ import { MatInputModule }             from '@angular/material';
 import { DataService }                from './data.service';
 import { Web3Service }                from './web3.service';
 import { CommunicationService }       from './communication.service';
-import { AppRoutingModule }           from './/app-routing.module';
-import { DashboardComponent }         from './dashboard/dashboard.component';
+import { AppRoutingModule }           from './app-routing.module';
+import { AbiOverviewComponent }       from './abi-overview/abi-overview.component';
 import { NewContractComponent }       from './new-contract/new-contract.component';
 import { ContractOverviewComponent }  from './contract-overview/contract-overview.component';
 
@@ -28,7 +28,7 @@ import { SafeUrlPipe }                from './shared/security/safe-url.pipe';
     HeadbarComponent,
     FormIoListComponent,
     KikoFormFieldComponent,
-    DashboardComponent,
+    AbiOverviewComponent,
     NewContractComponent,
     ContractOverviewComponent,
     SafeUrlPipe
