@@ -5,3 +5,7 @@
 .io_elem .notconstant {border: 1px solid #d43535; border-radius: 11px; color: #d43535; padding: 2px 0px; width: 22px; display: inline-flex; align-items: center; justify-content: center; text-align: center; font-size: 11px; margin-left: 5px;}
 .io_elem .type_event {border: 1px solid #478bec; border-radius: 11px; color: #478bec; padding: 2px 0px; width: 22px; display: inline-flex; align-items: center; justify-content: center; text-align: center; font-size: 11px; margin-left: 5px;}
 .count {color: #bdbdbd; font-weight: normal;}
+
+.filterbar {margin-bottom: 20px; }
+.filterbar .ghost_btn.mini{padding:4px 8px; font-weight: 400; border-width:1px;}
+.filterbar .filter_btn.active {background: #36b0ec; color: white;}

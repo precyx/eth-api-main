@@ -19,6 +19,7 @@ import { NewContractComponent }       from './new-contract/new-contract.componen
 import { ContractOverviewComponent }  from './contract-overview/contract-overview.component';
 
 import { SafeUrlPipe }                from './shared/security/safe-url.pipe';
+import { CallbackPipe }               from './shared/pipes/callback.pipe';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { SafeUrlPipe }                from './shared/security/safe-url.pipe';
     AbiOverviewComponent,
     NewContractComponent,
     ContractOverviewComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    CallbackPipe
   ],
   imports: [
     BrowserModule,

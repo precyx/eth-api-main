@@ -5,6 +5,19 @@
   <h1>{{contract.name}} <span class="count">({{contract_abi.length}})</span></h1>
 </div>
 
+<div class="filterbar">
+  <div class="ghost_btn mini btn filter_btn active"
+       (click)="filterByZero()"
+       [ngClass]="{'active' : checkActiveFiler('')}">
+    All Data
+  </div>
+  <div class="ghost_btn mini filter_btn btn"
+       (click)="filterByAddress()"
+       [ngClass]="{'active' : checkActiveFiler('address')}">
+    User Data
+  </div>
+</div>
+
 <div class="io_list">
   <a class="io_elem tile_btn"
      *ngFor="let io of contract_abi; let i = index"

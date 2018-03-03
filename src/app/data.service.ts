@@ -74,5 +74,30 @@ export class DataService {
     });
   }
 
+  /*dataSummary = [
+    name:"Player Summary",
+    values:[
+    {
+      contractName: "Etherbots Core",
+      abiFunction : {inputs:[], outputs:[]},
+      params : ["0x222222222222", 5]
+    },
+    {
+      contractName: "Etherbots Core",
+      abiFunction : {inputs:[], outputs:[]},
+      params : ["0x222222222222", 5]
+    },
+    {
+      contractName: "Etherbots Core",
+      abiFunction : {inputs:[], outputs:[]},
+      params : ["0x222222222222", 5]
+    }
+    y]
+  ];*/
+
+
+
+
+
 
 }
