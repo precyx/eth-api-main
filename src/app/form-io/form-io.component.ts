@@ -70,6 +70,7 @@ export class FormIoComponent implements OnInit {
   clickButton():void {
     this.output = "...";
     this.loading = true;
+    console.log(this.abi_function);
     var API = this.web3API;
     var abi_function_name = this.abi_function.name;
     var params = Object.values(this.params);

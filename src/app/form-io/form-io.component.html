@@ -35,6 +35,12 @@
         </div>
       </div>
       <div class="column c50">
+        <div class="description">
+          <div
+              *ngFor="let output of abi_function.outputs">
+            {{output.name}} ({{output.type}})
+          </div>
+        </div>
 
         <mat-form-field class="example-full-width">
           <textarea
