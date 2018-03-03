@@ -7,3 +7,6 @@
 .form_io.notconstant h2 {color: #fd4848;}
 .form_io.type_event h2 {color: #478bec;}
 .form_io .example-full-width {width:100%; max-width:400px;}
+/* btn */
+.api_btn {}
+.api_btn.loading { background:grey; color:rgba(0,0,0,0.9); cursor: default;}

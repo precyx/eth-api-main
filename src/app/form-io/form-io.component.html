@@ -7,26 +7,48 @@
 </div>
 
 <div class="form_io" [ngClass]="{'notconstant':abi_function.constant==false, 'type_event':abi_function.type=='event'}">
-  <h2>{{abi_function.name}}()</h2>
-  <div class="columns gap_big">
-    <div class="column c50">
-      <div *ngFor="let input of abi_function.inputs; trackBy index">
+  <form class="my_form_io">
+    <h2>{{abi_function.name}}()</h2>
+    <div class="columns gap_big">
+      <div class="column c50">
+        <div *ngFor="let input of abi_function.inputs; trackBy index; let i=index">
+
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              [(ngModel)]="params[i]"
+              id="{{input.name}}_{{abi_function.name}}"
+              placeholder="{{input.name}} ({{input.type}})"
+              name="{{input.name}}_{{abi_function.name}}"
+              value="">
+            <mat-error *ngIf="requiredFormControl.hasError('required')">
+              Param required
+            </mat-error>
+          </mat-form-field>
+
+        </div>
+        <div class="btn color_btn api_btn"
+             (click)="clickButton()"
+             [ngClass]="{'loading':loading}">
+          <p *ngIf="!loading">{{abi_function.name}}</p>
+          <p *ngIf="loading">loading...</p>
+        </div>
+      </div>
+      <div class="column c50">
 
         <mat-form-field class="example-full-width">
-          <input matInput id="{{input.name}}_{{abi_function.name}}" placeholder="{{input.name}} ({{input.type}})" value="">
+          <textarea
+            [(ngModel)]="output"
+            placeholder="output"
+            name="output"
+            id="output_{{abi_function.name}}"
+            matInput
+            disabled
+            value="">
+          </textarea>
         </mat-form-field>
 
       </div>
-      <div class="btn color_btn" onclick="API.getUserByAddress($('#address_getUserByAddress').val(), $('#userxp_getUserByAddress'), $('#perks_getUserByAddress'));">
-        {{abi_function.name}}
-      </div>
     </div>
-    <div class="column c50">
-
-      <mat-form-field class="example-full-width">
-        <textarea matInput disabled id="output_{{abi_function.name}}" placeholder="output" value=""></textarea>
-      </mat-form-field>
-
-    </div>
-  </div>
+  </form>
 </div>
