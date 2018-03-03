@@ -2,6 +2,7 @@ import { Component, OnInit }        from '@angular/core';
 import { ActivatedRoute }           from '@angular/router';
 import { Location }                 from '@angular/common';
 import { DataService }              from '../data.service';
+import { Contract }                 from '../classes/Contract';
 
 @Component({
   selector: 'app-contract-overview',
@@ -10,8 +11,8 @@ import { DataService }              from '../data.service';
 })
 export class ContractOverviewComponent implements OnInit {
 
-  contracts:object[];
-  contract:object;
+  contracts:Array<Contract>;
+  contract:Contract;
 
   constructor(
       private dataService:DataService,
@@ -24,7 +25,7 @@ export class ContractOverviewComponent implements OnInit {
   }
 
   getContract(){
-    const name = +this.route.snapshot.paramMap.get('name');
+    const name = this.route.snapshot.paramMap.get('name');
     this.contract = this.dataService.getContractByName(name);
   }
 

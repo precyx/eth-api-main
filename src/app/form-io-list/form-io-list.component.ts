@@ -2,6 +2,7 @@ import { Component, OnInit }        from '@angular/core';
 import { DataService }              from '../data.service';
 import { ActivatedRoute }           from '@angular/router';
 import { Location }                 from '@angular/common';
+import { Contract }                 from '../classes/Contract';
 
 @Component({
   selector: 'app-form-io-list',
@@ -10,7 +11,7 @@ import { Location }                 from '@angular/common';
 })
 export class FormIoListComponent implements OnInit {
 
-  contract:Object;
+  contract:Contract;
 
   constructor(
     private dataService:DataService,
@@ -22,7 +23,7 @@ export class FormIoListComponent implements OnInit {
   }
 
   getContract(){
-    var name = +this.route.snapshot.paramMap.get('name');
+    var name = this.route.snapshot.paramMap.get('name');
     this.contract = this.dataService.getContractByName(name);
   }
 

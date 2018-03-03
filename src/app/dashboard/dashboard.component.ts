@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService }       from '../data.service';
 import { ActivatedRoute }    from '@angular/router';
 import { Location }          from '@angular/common';
+import { Contract }          from '../classes/Contract';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,8 +11,8 @@ import { Location }          from '@angular/common';
 })
 export class DashboardComponent implements OnInit {
 
-  contract:any;
-  contract_abi:Object[];
+  contract:Contract;
+  contract_abi:Array<object>;
 
   constructor(
     private dataService:DataService,
