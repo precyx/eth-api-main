@@ -1,3 +1,9 @@
+<!-- backtracker bar -->
+<div class="backtracker_bar">
+  {{contract.name}}
+</div>
+
+<!-- titlebar -->
 <div class="titlebar">
   <a (click)="goBack()" class="back_btn">
     <
@@ -5,6 +11,7 @@
   <h1>{{contract.name}} <span class="count">({{contract_abi.length}})</span></h1>
 </div>
 
+<!-- filterbar -->
 <div class="filterbar">
   <div class="ghost_btn mini btn filter_btn active"
        (click)="filterByZero()"
@@ -23,6 +30,7 @@
   </div>
 </div>
 
+<!-- abi function list -->
 <div class="io_list">
   <a class="io_elem tile_btn"
      *ngFor="let io of contract_abi; let i = index"

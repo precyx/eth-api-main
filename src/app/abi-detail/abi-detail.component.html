@@ -1,4 +1,10 @@
 
+<!-- backtracker bar -->
+<div class="backtracker_bar">
+  {{contract.name}} > <b>{{abi_function.name}}</b>
+</div>
+
+<!-- titlebar -->
 <div class="titlebar">
   <a (click)="goBack()" class="back_btn">
     <
@@ -6,11 +12,10 @@
   <h1>{{abi_function.name}}</h1>
 </div>
 
-<div class="event_interface">
-  
-</div>
+<!-- event interface -->
+<div class="event_interface"></div>
 
-
+<!-- form io -->
 <div class="form_io" [ngClass]="{'notconstant':abi_function.constant==false, 'type_event':abi_function.type=='event'}">
   <form class="my_form_io">
     <h2>{{abi_function.name}}()</h2>
@@ -25,9 +30,6 @@
               placeholder="{{input.name}} ({{input.type}})"
               name="{{input.name}}_{{abi_function.name}}"
               value="">
-            <mat-error *ngIf="requiredFormControl.hasError('required')">
-              Param required
-            </mat-error>
           </mat-form-field>
         </div>
 
@@ -39,7 +41,7 @@
         </div>
 
         <div class="loop_check">
-          <label for="loop_checkbox">loop</label>
+          <label for="loop_checkbox">Enable Loop</label>
           <input type="checkbox" name="check_loop" id="loop_checkbox" [(ngModel)]="checkLoop">
         </div>
 
