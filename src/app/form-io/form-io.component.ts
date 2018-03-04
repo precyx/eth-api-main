@@ -28,6 +28,7 @@ export class FormIoComponent implements OnInit {
   requiredFormControl = new FormControl('', Validators.required);
 
   checkLoop:boolean = false;
+  loopInterval:number = 500;
 
   constructor(
     private dataService:DataService,
@@ -87,7 +88,11 @@ export class FormIoComponent implements OnInit {
         that.output = (that.output + "\n" + out) + " : " + t2;
       }
       that.loading = false;
-      that._ngZone.run(() => { console.log('Outside Done!'); });
+      that._ngZone.run(() => {
+        setTimeout(function() {
+          if(that.checkLoop) that.clickButton();
+        }, that.loopInterval);
+      });
     }
     params.push(handlerFunction);
     API[abi_function_name].apply(this, params);

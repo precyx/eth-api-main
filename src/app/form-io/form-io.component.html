@@ -24,18 +24,29 @@
               Param required
             </mat-error>
           </mat-form-field>
-
-          <div class="check">
-            <input type="checkbox" name="check_loop" [(ngModel)]="checkLoop">
-          </div>
-
         </div>
+
         <div class="btn color_btn api_btn"
              (click)="clickButton()"
              [ngClass]="{'loading':loading}">
           <p *ngIf="!loading">{{abi_function.name}}</p>
           <p *ngIf="loading">loading...</p>
         </div>
+
+        <div class="loop_check">
+          <label for="loop_checkbox">loop</label>
+          <input type="checkbox" name="check_loop" id="loop_checkbox" [(ngModel)]="checkLoop">
+        </div>
+
+        <mat-form-field class="example-full-width" *ngIf="checkLoop">
+          <input
+            matInput
+            [(ngModel)]="loopInterval"
+            id="loop_interval"
+            placeholder="Loop Interval"
+            name="loop_interval">
+        </mat-form-field>
+
       </div>
       <div class="column c50">
         <div class="description">

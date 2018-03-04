@@ -12,3 +12,6 @@
 .api_btn.loading { background:grey; color:rgba(0,0,0,0.9); cursor: default;}
 
 .description {font-size: 12px; color: grey; margin-bottom: 20px;}
+.loop_check {margin:30px 0; color: grey;}
+.loop_check label {cursor: pointer; user-select: none; text-transform: uppercase; color: grey; font-weight: bold;}
+.loop_check input {cursor: pointer;}
