@@ -2,32 +2,33 @@ import { BrowserModule }              from '@angular/platform-browser';
 import { NgModule }                   from '@angular/core';
 import { BrowserAnimationsModule }    from '@angular/platform-browser/animations';
 import { FormsModule }                from '@angular/forms';
+import { MatInputModule }             from '@angular/material';
 
 import { AppComponent }               from './app.component';
-import { FormIoComponent }            from './form-io/form-io.component';
+import { AbiDetailComponent }         from './abi-detail/form-io.component';
 import { HeadbarComponent }           from './headbar/headbar.component';
-import { FormIoListComponent }        from './form-io-list/form-io-list.component';
 import { KikoFormFieldComponent }     from './kiko-form-field/kiko-form-field.component';
-
-import { MatInputModule }             from '@angular/material';
-import { DataService }                from './data.service';
-import { Web3Service }                from './web3.service';
-import { CommunicationService }       from './communication.service';
-import { AppRoutingModule }           from './app-routing.module';
 import { AbiOverviewComponent }       from './abi-overview/abi-overview.component';
 import { NewContractComponent }       from './new-contract/new-contract.component';
 import { ContractOverviewComponent }  from './contract-overview/contract-overview.component';
 
+import { DataService }                from './data.service';
+import { Web3Service }                from './web3.service';
+import { CommunicationService }       from './communication.service';
+
 import { SafeUrlPipe }                from './shared/security/safe-url.pipe';
 import { CallbackPipe }               from './shared/pipes/callback.pipe';
+
+import { AppRoutingModule }           from './app-routing.module';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormIoComponent,
+    AbiDetailComponent,
     HeadbarComponent,
-    FormIoListComponent,
     KikoFormFieldComponent,
     AbiOverviewComponent,
     NewContractComponent,

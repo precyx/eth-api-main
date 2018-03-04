@@ -1,20 +1,21 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute }           from '@angular/router';
 import { Location }                 from '@angular/common';
+import { FormControl, Validators }  from '@angular/forms';
+import { ChangeDetectorRef }        from '@angular/core';
+import { NgZone }                   from '@angular/core';
+
 import { DataService }              from '../data.service';
 import { Web3Service }              from '../web3.service';
 import { Contract }                 from '../classes/Contract';
 
-import {FormControl, Validators}    from '@angular/forms';
-import { ChangeDetectorRef } from   '@angular/core';
-import { NgZone } from              '@angular/core';
 
 @Component({
-  selector: 'app-form-io',
-  templateUrl: './form-io.component.html',
-  styleUrls: ['./form-io.component.css']
+  selector: 'app-abi-detail',
+  templateUrl: './abi-detail.component.html',
+  styleUrls: ['./abi-detail.component.css']
 })
-export class FormIoComponent implements OnInit {
+export class AbiDetailComponent implements OnInit {
   abi_function:any;
   contract:Contract;
   web3API:any;
