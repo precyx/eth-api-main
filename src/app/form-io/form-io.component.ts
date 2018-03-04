@@ -27,6 +27,8 @@ export class FormIoComponent implements OnInit {
   /* material errors */
   requiredFormControl = new FormControl('', Validators.required);
 
+  checkLoop:boolean = false;
+
   constructor(
     private dataService:DataService,
     private web3Service:Web3Service,

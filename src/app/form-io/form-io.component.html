@@ -12,7 +12,6 @@
     <div class="columns gap_big">
       <div class="column c50">
         <div *ngFor="let input of abi_function.inputs; trackBy index; let i=index">
-
           <mat-form-field class="example-full-width">
             <input
               matInput
@@ -25,6 +24,10 @@
               Param required
             </mat-error>
           </mat-form-field>
+
+          <div class="check">
+            <input type="checkbox" name="check_loop" [(ngModel)]="checkLoop">
+          </div>
 
         </div>
         <div class="btn color_btn api_btn"
