@@ -9,6 +9,10 @@ if (environment.production) {
   enableProdMode();
 }
 
+declare let window: any;
+declare let web3: any;
+declare let Web3: any;
+
 window.addEventListener('load', function() {
   // Checking if Web3 has been injected by the browser (Mist/MetaMask)
   if (typeof window.web3 !== 'undefined') {

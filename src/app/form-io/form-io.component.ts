@@ -68,7 +68,7 @@ export class FormIoComponent implements OnInit {
    * [clickButton ]
    */
   clickButton():void {
-    this.output = "...";
+    //this.output = "...";
     this.loading = true;
     console.log(this.abi_function);
     var API = this.web3API;
@@ -80,13 +80,16 @@ export class FormIoComponent implements OnInit {
       else{
         var out = res;
         if(out.isBigNumber) out.toNumber();
-        that.output = out;
+        var t = new Date();
+        var t2 = ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2) + ":" + ("0" + t.getSeconds()).slice(-2);
+        that.output = (that.output + "\n" + out) + " : " + t2;
       }
       that.loading = false;
       that._ngZone.run(() => { console.log('Outside Done!'); });
     }
     params.push(handlerFunction);
     API[abi_function_name].apply(this, params);
+
   }
 
 }
