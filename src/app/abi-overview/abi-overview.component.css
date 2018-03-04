@@ -9,6 +9,7 @@
 
 /* filterbar */
 .filterbar {margin-bottom: 20px; }
+.filterbar .btn {margin-right: 5px;}
 .filterbar .ghost_btn.mini{padding:4px 8px; font-weight: 400; border-width:1px;}
 .filterbar .filter_btn.active {background: #36b0ec; color: white;}
 

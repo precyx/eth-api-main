@@ -42,9 +42,17 @@ export class AbiOverviewComponent implements OnInit {
       this.location.back();
     }
 
-    /* Filter related stuff */
 
-    filterByAddress(){
+    /*
+     * Filter functions
+     */
+
+     checkActiveFiler(filter:string):boolean{
+       if(this.active_filter == filter) return true;
+       else return false;
+     }
+
+    filterByAddress():void{
       this.active_filter = "address";
       this.getContractAbi();
       var filtered:Array<object> = [];
@@ -62,7 +70,7 @@ export class AbiOverviewComponent implements OnInit {
       this.contract_abi = filtered;
     }
 
-    filterByToken(){
+    filterByToken():void{
       this.active_filter = "token";
       this.getContractAbi();
       var filtered:Array<object> = [];
@@ -80,15 +88,40 @@ export class AbiOverviewComponent implements OnInit {
       this.contract_abi = filtered;
     }
 
-    filterByZero(){
+    filterByZero():void{
       this.active_filter = "";
       this.getContractAbi();
     }
 
-    checkActiveFiler(filter:string):boolean{
-      if(this.active_filter == filter) return true;
-      else return false;
+    filterByEvent():void{
+      this.active_filter = "event";
+      this.getContractAbi();
+      var filtered:Array<object> = [];
+      for(var i = this.contract_abi.length-1; i>=0; i--){
+        var elem:any = this.contract_abi[i];
+        //
+        if(!elem.type) {continue}
+        if(elem.type == "event") {filtered.push(elem); continue}
+      }
+      this.contract_abi = filtered;
     }
+
+    filterByNonConstant():void {
+      this.active_filter = "nonconstant";
+      this.getContractAbi();
+      var filtered:Array<object> = [];
+      for(var i = this.contract_abi.length-1; i>=0; i--){
+        var elem:any = this.contract_abi[i];
+        //
+        if(elem.type){
+          if(elem.type == "event"){continue}
+        }
+        if(!elem.constant) {filtered.push(elem); continue}
+      }
+      this.contract_abi = filtered;
+    }
+
+
 
     /*filterAbiFunctions(abi_function:any) {
         if(abi_function.inputs){

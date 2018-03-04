@@ -12,8 +12,6 @@
   <h1>{{abi_function.name}}</h1>
 </div>
 
-<!-- event interface -->
-<div class="event_interface"></div>
 
 <!-- form io -->
 <div class="form_io" [ngClass]="{'notconstant':abi_function.constant==false, 'type_event':abi_function.type=='event'}">
@@ -76,6 +74,21 @@
             value="">
           </textarea>
         </mat-form-field>
+
+        <!-- event output -->
+        <div class="event_interface" *ngIf="abi_function.type == 'event'">
+          <mat-form-field class="example-full-width">
+            <textarea
+              matInput
+              [(ngModel)]="eventData"
+              id="event_output"
+              placeholder="Event Data"
+              name="event_output"
+              matTextareaAutosize
+              matAutosizeMinRows="2"
+              matAutosizeMaxRows="8"></textarea>
+          </mat-form-field>
+        </div>
 
       </div>
     </div>

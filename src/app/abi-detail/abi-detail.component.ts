@@ -16,6 +16,7 @@ import { Contract }                 from '../classes/Contract';
   styleUrls: ['./abi-detail.component.css']
 })
 export class AbiDetailComponent implements OnInit {
+  /* Objects*/
   abi_function:any;
   contract:Contract;
   web3API:any;
@@ -28,8 +29,12 @@ export class AbiDetailComponent implements OnInit {
   /* material errors */
   requiredFormControl = new FormControl('', Validators.required);
 
+  /* checkbot data */
   checkLoop:boolean = false;
   loopInterval:number = 500;
+
+  /* event data */
+  eventData:string = "";
 
   constructor(
     private dataService:DataService,
@@ -42,6 +47,7 @@ export class AbiDetailComponent implements OnInit {
   ngOnInit() {
     this.getAbiFunction();
     this.initWeb3();
+    this.listenToEvents();
   }
 
   getAbiFunction():void{
@@ -67,9 +73,44 @@ export class AbiDetailComponent implements OnInit {
     this.location.back();
   }
 
+
+  /**
+   * Listen to Events
+   * @refactoring
+   */
+   listenToEvents():void{
+     if(!this.abi_function.type) return;
+     if(this.abi_function.type != "event") return;
+     //
+     var that = this;
+     var API = this.web3API;
+     var abi_fn = this.abi_function.name;
+     var Event = API[abi_fn]();
+     console.log(Event);
+     Event.watch(function(err, res){
+       console.log("err, ", err);
+       console.log("res, ", res);
+       if(!err) that.parseEventResult(res);
+
+     });
+   }
+
+   parseEventResult(res){
+     var output = "";
+     var t = new Date();
+     var t2 = ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2) + ":" + ("0" + t.getSeconds()).slice(-2);
+     output += res.event + "\n";
+     output += res.transactionHash + "\n";
+     output += t2 + "\n";
+     this.eventData += (output + "\n\n");
+     //
+     this._ngZone.run(() => {});
+   }
+
   /**
    * needs cleanup
    * [clickButton ]
+   * @refactoring
    */
   clickButton():void {
     //this.output = "...";
@@ -82,11 +123,11 @@ export class AbiDetailComponent implements OnInit {
     var handlerFunction = function(err, res){
       if(err) console.log(err);
       else{
-        var out = res;
+        var out:any = res;
         if(out.isBigNumber) out.toNumber();
         var t = new Date();
         var t2 = ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2) + ":" + ("0" + t.getSeconds()).slice(-2);
-        that.output = (that.output + "\n" + out) + " : " + t2;
+        that.output += "\n" + out + " : " + t2;
       }
       that.loading = false;
       that._ngZone.run(() => {

@@ -28,6 +28,16 @@
        [ngClass]="{'active' : checkActiveFiler('token')}">
     Token Data
   </div>
+  <div class="ghost_btn mini filter_btn btn"
+       (click)="filterByEvent()"
+       [ngClass]="{'active' : checkActiveFiler('event')}">
+    Event
+  </div>
+  <div class="ghost_btn mini filter_btn btn"
+       (click)="filterByNonConstant()"
+       [ngClass]="{'active' : checkActiveFiler('nonconstant')}">
+    Non Constant
+  </div>
 </div>
 
 <!-- abi function list -->
