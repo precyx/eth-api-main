@@ -16,6 +16,11 @@
        [ngClass]="{'active' : checkActiveFiler('address')}">
     User Data
   </div>
+  <div class="ghost_btn mini filter_btn btn"
+       (click)="filterByToken()"
+       [ngClass]="{'active' : checkActiveFiler('token')}">
+    Token Data
+  </div>
 </div>
 
 <div class="io_list">

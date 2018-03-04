@@ -46,7 +46,7 @@ export class AbiOverviewComponent implements OnInit {
 
     filterByAddress(){
       this.active_filter = "address";
-      //this.getContractAbi();
+      this.getContractAbi();
       var filtered:Array<object> = [];
       for(var i = this.contract_abi.length-1; i>=0; i--){
         var elem:any = this.contract_abi[i];
@@ -58,6 +58,24 @@ export class AbiOverviewComponent implements OnInit {
         if(!elem.inputs.length) {filtered.push(elem); continue}
         if(elem.inputs[0].type == "address") {filtered.push(elem); continue}
         if(elem.inputs[0].type == "address") {filtered.push(elem); continue}
+      }
+      this.contract_abi = filtered;
+    }
+
+    filterByToken(){
+      this.active_filter = "token";
+      this.getContractAbi();
+      var filtered:Array<object> = [];
+      for(var i = this.contract_abi.length-1; i>=0; i--){
+        var elem:any = this.contract_abi[i];
+        //
+        if(elem.name == "ownsAll" ||
+           elem.name == "tokensOfOwner" ||
+           elem.name == "owner" ||
+           elem.name == "paused" ||
+           elem.name == "totalSupply" ||
+           elem.name == "ownsAll"
+         ) {filtered.push(elem); continue}
       }
       this.contract_abi = filtered;
     }
