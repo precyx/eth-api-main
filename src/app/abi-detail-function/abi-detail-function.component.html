@@ -1,0 +1,69 @@
+<!-- form io -->
+<div class="form_io" [ngClass]="{'notconstant':abi_function.constant==false}"
+  *ngIf="abi_function.type != 'event'">
+  <form class="my_form_io">
+    <h2>{{abi_function.name}}()</h2>
+    <div class="columns gap_big">
+      <div class="column c50">
+        <div *ngFor="let input of abi_function.inputs; trackBy index; let i=index">
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              [(ngModel)]="params[i]"
+              id="{{input.name}}_{{abi_function.name}}"
+              placeholder="{{input.name}} ({{input.type}})"
+              name="{{input.name}}_{{abi_function.name}}"
+              value="">
+          </mat-form-field>
+        </div>
+
+        <div class="btn color_btn api_btn"
+             (click)="clickButton()"
+             [ngClass]="{'loading':loading}">
+          <p *ngIf="!loading">{{abi_function.name}}</p>
+          <p *ngIf="loading">loading...</p>
+        </div>
+
+        <div class="loop_check">
+          <label for="loop_checkbox">Enable Loop</label>
+          <input type="checkbox" name="check_loop" id="loop_checkbox" [(ngModel)]="checkLoop">
+        </div>
+
+        <mat-form-field class="example-full-width" *ngIf="checkLoop">
+          <input
+            matInput
+            [(ngModel)]="loopInterval"
+            id="loop_interval"
+            placeholder="Loop Interval"
+            name="loop_interval">
+        </mat-form-field>
+
+      </div>
+      <div class="column c50">
+        <div class="description">
+          <div
+              *ngFor="let output of abi_function.outputs">
+            {{output.name}} ({{output.type}})
+          </div>
+        </div>
+
+        <mat-form-field class="example-full-width">
+          <textarea
+            [(ngModel)]="output"
+            placeholder="output"
+            name="output"
+            id="output_{{abi_function.name}}"
+            matInput
+            matTextareaAutosize
+            matAutosizeMinRows="2"
+            matAutosizeMaxRows="20"
+            value="">
+          </textarea>
+        </mat-form-field>
+
+
+
+      </div>
+    </div>
+  </form>
+</div>

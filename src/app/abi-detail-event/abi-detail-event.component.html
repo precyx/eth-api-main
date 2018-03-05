@@ -1,0 +1,22 @@
+<!-- event output -->
+<div class="event_detail type_event card">
+  <form class="my_form_io">
+    <h2>Event {{abi_function.name}}()</h2>
+
+        <!-- event output -->
+        <div class="event_interface">
+          <mat-form-field class="example-full-width">
+            <textarea
+              matInput
+              [(ngModel)]="eventData"
+              id="event_output"
+              placeholder="Event Data"
+              name="event_output"
+              matTextareaAutosize
+              matAutosizeMinRows="4"
+              matAutosizeMaxRows="999999"></textarea>
+          </mat-form-field>
+        </div>
+
+  </form>
+</div>
