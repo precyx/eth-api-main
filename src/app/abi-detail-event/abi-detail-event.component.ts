@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgZone }                   from '@angular/core';
 
 import { Contract }                 from '../classes/Contract';
+import { SafeUrlPipe }              from '../shared/security/safe-url.pipe';
 
 @Component({
   selector: 'app-abi-detail-event',
@@ -16,7 +17,8 @@ export class AbiDetailEventComponent implements OnInit {
   @Input() web3API:any;
 
   /* Event Data */
-  eventData:any;
+  eventLog:any;
+  eventData:Array<object> = [];
 
 
   constructor(private _ngZone: NgZone) { }
@@ -46,16 +48,30 @@ export class AbiDetailEventComponent implements OnInit {
      });
    }
 
-   parseEventResult(res){
-     var output = "";
-     var t = new Date();
-     var t2 = ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2) + ":" + ("0" + t.getSeconds()).slice(-2);
-     output += res.event + "\n";
-     output += res.transactionHash + "\n";
-     output += t2 + "\n";
-     this.eventData += (output + "\n\n");
-     //
-     this._ngZone.run(() => {});
-   }
+    parseEventResult(res){
+      // old output
+      /*var output = "";
+      var t = new Date();
+      var t2 = ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2) + ":" + ("0" + t.getSeconds()).slice(-2);
+      output += res.event + "\n";
+      output += res.transactionHash + "\n";
+      output += t2 + "\n";
+      this.eventLog += (output + "\n\n");*/
+      //
+      // new output
+      // add keys
+      var newArgs = [];
+      for(var key in res.args){
+        newArgs.push({"key":key, "val":res.args[key]});
+      }
+      res.args = newArgs;
+      // add timestamp
+      var t = new Date();
+      var t2 = ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2) + ":" + ("0" + t.getSeconds()).slice(-2);
+      res.timestamp = t2;
+      this.eventData.push(res);
+      //
+      this._ngZone.run(() => {});
+    }
 
 }
