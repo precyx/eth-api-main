@@ -5,8 +5,18 @@
 
 /* event data */
 .eventData { display: flex; align-items: left; flex-direction: column; }
-.event {background: #9436ce; padding: 10px; border-radius: 8px; margin-bottom: 10px; color: white; display: inline-block;}
+.event {width:100%; color: #9436ce; }
 .event .name {font-weight: bold; margin-bottom: 3px; font-size: 14px;}
-.event .time {font-size: 12px; margin-left: 5px; font-weight: normal; opacity:0.5;}
+.event .time {font-size: 12px; }
 .event .transaction {font-size: 12px;}
-.event .arguments {font-size: 12px;}
+
+/* arguments */
+.arguments.header {}
+.arguments.header .argument {font-weight: bold;}
+.arguments {font-size: 12px; display: flex; justify-content: space-between; width:100%; border-bottom: 1px solid #ececec;}
+.argument {padding-bottom: 5px; padding-top:5px; font-size: 12px;  min-width: 150px; max-width: 150px; overflow: hidden; text-overflow: ellipsis;}
+.argument.transHash {max-width: 100px; overflow: hidden; text-overflow: ellipsis;}
+.argument.id {max-width: 50px; min-width: 20px;}
+
+/* no data */
+.no_data {color: rgb(200,200,200); font-size: 12px; font-style: italic; margin: 5px 0;}

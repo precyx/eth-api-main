@@ -5,31 +5,48 @@
 
         <!-- event output -->
         <div class="event_interface">
-          <mat-form-field class="example-full-width" *ngIf="false">
-            <textarea
-              matInput
-              [(ngModel)]="eventLog"
-              id="event_output"
-              placeholder="Event Data"
-              name="event_output"
-              matTextareaAutosize
-              matAutosizeMinRows="4"
-              matAutosizeMaxRows="999999"></textarea>
-          </mat-form-field>
 
           <div class="eventData">
-            <div class="event" *ngFor="let event of eventData">
-              <div class="name">
-                  {{event.event}} <span class="time">{{event.timestamp}}</span>
+
+            <!-- header data -->
+            <div class="arguments header" *ngIf="eventHeaderData">
+              <div class="argument id">
+                ID
               </div>
-              <div class="transaction">
-                {{event.transactionHash}}
+              <div class="argument" *ngFor="let arg of eventHeaderData">
+                {{arg.key}}
               </div>
+              <div class="argument">
+                <span class="time">Timestamp</span>
+              </div>
+              <div class="argument">
+                TX
+              </div>
+            </div>
+
+            <!-- no data -->
+            <div class="no_data" *ngIf="!eventData.length">
+              No Events yet...
+            </div>
+
+            <div class="event" *ngFor="let event of eventData; let i = index">
+
+              <!-- arguments -->
               <div class="arguments">
+                <div class="argument id">
+                  <span class="time">#{{i+1}}</span>
+                </div>
                 <div class="argument" *ngFor="let arg of event.args">
-                  {{arg.key}} : {{arg.val | safeUrl}}
+                  {{arg.val | safeUrl}}
+                </div>
+                <div class="argument">
+                  <span class="time">{{event.timestamp}}</span>
+                </div>
+                <div class="argument transHash">
+                  {{event.transactionHash}}
                 </div>
               </div>
+
             </div>
           </div>
         </div>

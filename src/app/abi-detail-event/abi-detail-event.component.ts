@@ -19,6 +19,7 @@ export class AbiDetailEventComponent implements OnInit {
   /* Event Data */
   eventLog:any;
   eventData:Array<object> = [];
+  eventHeaderData:Array<object>;
 
 
   constructor(private _ngZone: NgZone) { }
@@ -64,6 +65,8 @@ export class AbiDetailEventComponent implements OnInit {
       for(var key in res.args){
         newArgs.push({"key":key, "val":res.args[key]});
       }
+      if(!this.eventHeaderData) this.eventHeaderData = newArgs;
+      console.log(this.eventHeaderData);
       res.args = newArgs;
       // add timestamp
       var t = new Date();
