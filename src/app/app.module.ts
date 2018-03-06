@@ -23,7 +23,8 @@ import { DataService }                from './data.service';
 import { Web3Service }                from './web3.service';
 
 import { SafeUrlPipe }                from './shared/security/safe-url.pipe';
-import { CallbackPipe }               from './shared/pipes/callback.pipe';
+import { TimeagoService }             from './services/timeago.service';
+
 
 
 
@@ -41,7 +42,6 @@ import { CallbackPipe }               from './shared/pipes/callback.pipe';
     NewContractComponent,
     ContractOverviewComponent,
     SafeUrlPipe,
-    CallbackPipe,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +55,8 @@ import { CallbackPipe }               from './shared/pipes/callback.pipe';
   ],
   providers: [
     DataService,
-    Web3Service
+    Web3Service,
+    TimeagoService
   ],
   bootstrap: [AppComponent]
 })

@@ -10,17 +10,17 @@
 
             <!-- header data -->
             <div class="arguments header" *ngIf="eventHeaderData">
-              <div class="argument id">
+              <div class="argument id" title="Event ID">
                 ID
               </div>
-              <div class="argument" *ngFor="let arg of eventHeaderData">
+              <div class="argument" *ngFor="let arg of eventHeaderData" title="{{arg.key}}">
                 {{arg.key}}
               </div>
-              <div class="argument">
-                <span class="time">Timestamp</span>
-              </div>
-              <div class="argument">
+              <div class="argument" title="Transaction">
                 TX
+              </div>
+              <div class="argument time" title="Timestamp">
+                Timestamp
               </div>
             </div>
 
@@ -33,17 +33,17 @@
 
               <!-- arguments -->
               <div class="arguments">
-                <div class="argument id">
-                  <span class="time">#{{i+1}}</span>
+                <div class="argument id" title="{{i+1}}">
+                  #{{i+1}}
                 </div>
-                <div class="argument" *ngFor="let arg of event.args">
-                  {{arg.val | safeUrl}}
+                <div class="argument" *ngFor="let arg of event.args" title="{{arg.val | safeUrl}}">
+                  {{arg.val | safeUrl:arg.key}}
                 </div>
-                <div class="argument">
-                  <span class="time">{{event.timestamp}}</span>
-                </div>
-                <div class="argument transHash">
+                <div class="argument transHash" title="{{event.transactionHash}}">
                   {{event.transactionHash}}
+                </div>
+                <div class="argument time" title="{{event.timestamp}}">
+                  {{event.timeago}}
                 </div>
               </div>
 

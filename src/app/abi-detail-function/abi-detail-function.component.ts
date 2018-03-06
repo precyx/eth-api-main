@@ -3,6 +3,8 @@ import { NgZone }                   from '@angular/core';
 
 import { Contract }                 from '../classes/Contract';
 
+import { BigNumber }                from "bignumber.js";
+
 @Component({
   selector: 'app-abi-detail-function',
   templateUrl: './abi-detail-function.component.html',
@@ -46,7 +48,9 @@ export class AbiDetailFunctionComponent implements OnInit {
       if(err) console.log(err);
       else{
         var out:any = res;
-        if(out.isBigNumber) out.toNumber();
+        console.log(out);
+        if(BigNumber.isBigNumber(out)) out.toNumber();
+        if(out.constructor === Array) out = JSON.stringify(out);
         var t = new Date();
         var t2 = ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2) + ":" + ("0" + t.getSeconds()).slice(-2);
         that.output += "\n" + out + " : " + t2;

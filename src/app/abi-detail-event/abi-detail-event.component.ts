@@ -4,6 +4,8 @@ import { NgZone }                   from '@angular/core';
 import { Contract }                 from '../classes/Contract';
 import { SafeUrlPipe }              from '../shared/security/safe-url.pipe';
 
+import { TimeagoService }           from '../services/timeago.service';
+
 @Component({
   selector: 'app-abi-detail-event',
   templateUrl: './abi-detail-event.component.html',
@@ -22,7 +24,9 @@ export class AbiDetailEventComponent implements OnInit {
   eventHeaderData:Array<object>;
 
 
-  constructor(private _ngZone: NgZone) { }
+  constructor(
+    private _ngZone: NgZone,
+    private timeagoService:TimeagoService) {}
 
   ngOnInit() {
     this.listenToEvents();
@@ -50,16 +54,6 @@ export class AbiDetailEventComponent implements OnInit {
    }
 
     parseEventResult(res){
-      // old output
-      /*var output = "";
-      var t = new Date();
-      var t2 = ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2) + ":" + ("0" + t.getSeconds()).slice(-2);
-      output += res.event + "\n";
-      output += res.transactionHash + "\n";
-      output += t2 + "\n";
-      this.eventLog += (output + "\n\n");*/
-      //
-      // new output
       // add keys
       var newArgs = [];
       for(var key in res.args){
@@ -72,6 +66,7 @@ export class AbiDetailEventComponent implements OnInit {
       var t = new Date();
       var t2 = ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2) + ":" + ("0" + t.getSeconds()).slice(-2);
       res.timestamp = t2;
+      res.timeago = this.timeagoService.getTimeAgo( Date.now().toString() );
       this.eventData.push(res);
       //
       this._ngZone.run(() => {});
