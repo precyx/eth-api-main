@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgZone }                   from '@angular/core';
 
 import { Contract }                 from '../classes/Contract';
+import { Web3Service }              from '../web3.service';
+import { DataService }              from '../data.service';
 
 import { BigNumber }                from "bignumber.js";
 
@@ -26,9 +28,69 @@ export class AbiDetailFunctionComponent implements OnInit {
   checkLoop:boolean = false;
   loopInterval:number = 500;
 
-  constructor(private _ngZone: NgZone) { }
+  /* specific data */
+  auctions:Array<any> = [];
+  i_a:number = 0;
+  i_b:number = 0;
+
+
+  constructor(
+    private _ngZone: NgZone,
+    private web3Service:Web3Service,
+    private dataService:DataService) { }
 
   ngOnInit() {
+    if(this.abi_function.name == "getAuction" &&
+       this.contract.address == "0x98ecf84ac50aa3c090f88b04676babc296d03527")
+       this.renderAuctionDisplay();
+  }
+
+
+  renderAuctionDisplay():void {
+    var web4                 = this.web3Service.getWeb3();
+    var etherbotsCoreAbi     = this.dataService.getContractByName("eb-live-core").abi;
+    var etherbotsCoreAddress = this.dataService.getContractByName("eb-live-core").address;
+    var web4API              = web4.eth.contract(etherbotsCoreAbi).at(etherbotsCoreAddress);
+    //
+    var that = this;
+    //
+    web4API.totalSupply(function(err, res){
+      if(!err){
+        var totalSupply = res.toNumber();
+        for(var i = 0; i < totalSupply; i++){
+          that.web3API.getAuction(i.toString(), function(err, res){
+            if(!err){
+              if(res[0] != "0x") {
+                var auction = {
+                  'partid' : that.i_a,
+                  'address' : res[0],
+                  'startprice' : (res[1].toNumber() / 1000000000000000000) + " ETH",
+                  'endprice' : (res[2].toNumber() / 1000000000000000000) + " ETH"
+                };
+                that.auctions[that.i_a] = auction;
+                that.interractWith_PartById(web4API, "getPartById", auction, that.i_a);
+                that.i_a++;
+              }
+            }
+          });
+
+        }
+      }
+    });
+
+  }
+
+
+  interractWith_PartById(_contract, _fnName, _auction, _index):void{
+    var that = this;
+    _contract[_fnName](_index, function(err, res){
+      that.auctions[that.i_b].partSubType = res[2].toNumber();
+      that.auctions[that.i_b].rarity = res[3].toNumber();
+      that.auctions[that.i_b].id3 = that.i_b;
+      //console.log(that.auctions);
+      that.i_b++;
+      that._ngZone.run(() => {});
+    });
   }
 
   /**

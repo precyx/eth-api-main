@@ -67,3 +67,59 @@
     </div>
   </form>
 </div>
+
+
+
+<h1>All Auctions <span class="count">({{auctions.length}})</span></h1>
+
+
+<!-- auctions -->
+<div class="auctions">
+
+  <!-- header data -->
+  <div class="arguments header">
+    <div class="argument id" title="Auction ID">
+      ID
+    </div>
+    <div class="argument partSubType">
+      PartSubType
+    </div>
+    <div class="argument rarity">
+      Rarity
+    </div>
+    <div class="argument">
+      Address
+    </div>
+    <div class="argument">
+      Startprice
+    </div>
+    <div class="argument">
+      Endprice
+    </div>
+  </div>
+
+  <div class="auction" *ngFor="let auction of auctions; let i = index;">
+
+
+    <div class="arguments">
+      <div class="argument id" title="{{i+1}}">
+        #{{i+1}} §{{auction.partid}} ¢{{auction.id3}}
+      </div>
+      <div class="argument partSubType p{{auction.partSubType}}">
+        <div class="gg"></div>
+      </div>
+      <div class="argument rarity r{{auction.rarity}}">
+        <div class="gg"></div>
+      </div>
+      <div class="argument address">
+        {{auction.address}}
+      </div>
+      <div class="argument">
+        {{auction.startprice}}
+      </div>
+      <div class="argument">
+        {{auction.endprice}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,7 @@
+/* general */
+.tile_btn.highlight {background: #c778ff; border: 2px solid #c778ff; color: white; font-weight: bold; text-transform: uppercase;}
+.tile_btn.highlight:hover {border-color:#6a378f; }
+
 /* io_list */
 .io_list {display: flex; flex-wrap: wrap; }
 
@@ -6,6 +10,9 @@
 .io_elem .notconstant {border: 1px solid #d43535; border-radius: 11px; color: #d43535; padding: 2px 0px; width: 22px; display: inline-flex; align-items: center; justify-content: center; text-align: center; font-size: 11px; margin-left: 5px;}
 .io_elem .type_event {border: 1px solid #478bec; border-radius: 11px; color: #478bec; padding: 2px 0px; width: 22px; display: inline-flex; align-items: center; justify-content: center; text-align: center; font-size: 11px; margin-left: 5px;}
 .count {color: #bdbdbd; font-weight: normal;}
+
+/* abi_groups */
+.abi_groups {padding-bottom: 10px; margin-bottom: 20px; border-bottom: 1px solid #ececec;}
 
 /* filterbar */
 .filterbar {margin-bottom: 20px; }

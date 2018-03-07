@@ -15,9 +15,10 @@ import { AbiOverviewComponent }       from './abi-overview/abi-overview.componen
 import { AbiDetailComponent }         from './abi-detail/abi-detail.component';
 import { AbiDetailEventComponent }    from './abi-detail-event/abi-detail-event.component';
 import { AbiDetailFunctionComponent } from './abi-detail-function/abi-detail-function.component';
+import { AbiListComponent }           from './abi-list/abi-list.component';
 import { NewContractComponent }       from './new-contract/new-contract.component';
 import { ContractOverviewComponent }  from './contract-overview/contract-overview.component';
-
+import { DebugComponent }             from './debug/debug.component';
 
 import { DataService }                from './data.service';
 import { Web3Service }                from './web3.service';
@@ -30,18 +31,22 @@ import { TimeagoService }             from './services/timeago.service';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     AbiDetailComponent,
     AbiDetailEventComponent,
     AbiDetailFunctionComponent,
+    AbiListComponent,
     HeadbarComponent,
     KikoFormFieldComponent,
     AbiOverviewComponent,
     NewContractComponent,
     ContractOverviewComponent,
-    SafeUrlPipe,
+    DebugComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,

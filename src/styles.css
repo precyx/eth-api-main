@@ -19,7 +19,7 @@ hr.clear{clear:both; margin:0; padding:0; border:0;}
 -o-transition: all 0.2s ease;
 transition: all 0.2s ease; }
 
-.main {margin-top:20px;}
+.main {margin-top:20px; margin-bottom: 400px!important;}
 .mainnav {display: flex; margin-bottom: 60px;}
 .mainnav .btn {margin-right: 10px;}
 
