@@ -29,6 +29,7 @@ export class AbiDetailFunctionComponent implements OnInit {
   loopInterval:number = 500;
 
   /* specific data */
+  AUCTION_FLAG:boolean = false;
   auctions:Array<any> = [];
   i_a:number = 0;
   i_b:number = 0;
@@ -42,7 +43,10 @@ export class AbiDetailFunctionComponent implements OnInit {
   ngOnInit() {
     if(this.abi_function.name == "getAuction" &&
        this.contract.address == "0x98ecf84ac50aa3c090f88b04676babc296d03527")
-       this.renderAuctionDisplay();
+       {
+         this.renderAuctionDisplay();
+         this.AUCTION_FLAG = true;
+       }
   }
 
 

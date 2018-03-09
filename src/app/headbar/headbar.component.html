@@ -1,7 +1,10 @@
 <div class="headbar">
   <div class="center">
     <div class="mainnav" *ngIf="true">
-      <div routerLink="/main" class="home_btn btn">ETH-API</div>
+      <div routerLink="/main" class="elem home_btn btn">ETH-API</div>
+      <div class="elem user">
+        {{currentAddress}}
+      </div>
     </div>
   </div>
 </div>

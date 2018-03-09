@@ -22,7 +22,7 @@ transition: all 0.2s ease; }
 
 /* CUSTOM */
 .main {margin-top:20px; margin-bottom: 400px!important;}
-.home_btn {color:#c778ff; outline:none; text-decoration: underline; font-size: 16px; cursor: pointer; font-weight: bold;}
+
 
 .add_contract_btn { position: fixed; width: 80px; height: 80px; background: #ff3865; -webkit-box-shadow: 0 2px 2px black; box-shadow: 0 4px 12px #0000003b; right: 90px; bottom: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; color: white; user-select:none; font-size: 36px; font-weight: normal; cursor: pointer;}
 .add_contract_btn:hover { background:#ff6487;}

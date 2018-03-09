@@ -16,11 +16,26 @@
 
 <div class="card">
   <h2>Stats <span class="count">({{stats.length}})</span></h2>
-  <div class="stat" *ngFor="let fn of stats">
-    <span class="key">{{fn.name}}</span> <span class="val">{{fn.val}}</span>
+  <div class="stats bb_table">
+    <div class="stat bb_row" *ngFor="let fn of stats; let i = index;">
+      <a class="key bb_cell" routerLink="/main/{{contract.url}}/fn/{{i}}">{{fn.name}}</a>
+      <span class="val bb_cell">{{fn.val}}</span>
+    </div>
   </div>
-  <div class="stat" *ngFor="let r of noParamResults">
-    {{r}}
-  </div>
+</div>
 
+
+<div class="card">
+  <h2>
+    User Data
+    <span class="count">({{userData.length}})</span>
+    <p class="color"><span>User: </span><span>{{currentUserAddress}}</span></p>
+  </h2>
+
+  <div class="userdata bb_table">
+    <div class="userdat bb_row" *ngFor="let elem of userData; let i = index;">
+      <a class="key bb_cell" routerLink="/main/{{contract.url}}/fn/{{i}}">{{elem.name}}</a>
+      <span class="val bb_cell">{{elem.val}}</span>
+    </div>
+  </div>
 </div>

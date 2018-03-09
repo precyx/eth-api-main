@@ -70,11 +70,15 @@
 
 
 
-<h1>All Auctions <span class="count">({{auctions.length}})</span></h1>
+
+
+
+
 
 
 <!-- auctions -->
-<div class="auctions">
+<div class="auctions" *ngIf="AUCTION_FLAG">
+  <h1>All Auctions <span class="count">({{auctions.length}})</span></h1>
 
   <!-- header data -->
   <div class="arguments header">

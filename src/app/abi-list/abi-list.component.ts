@@ -19,8 +19,10 @@ export class AbiListComponent implements OnInit {
 
   /* Objects */
   contract:Contract;
-  stats:any = [];
   web3API:any;
+  stats:any = [];
+  userData:any = [];
+  currentUserAddress:string;
 
   constructor(
         private dataService:DataService,
@@ -33,14 +35,19 @@ export class AbiListComponent implements OnInit {
   ngOnInit() {
     this.getData();
     this.initWeb3();
-    this.getNoparamFunctions();
-    this.callWeb3Functions();
+    //
+    this.getConstants();
+    this.parseConstants();
+    //
+    this.getUserData();
+    this.parseUserData();
   }
 
   getData():void{
     const contract_name:string = this.route.snapshot.paramMap.get('name');
     const contract:Contract = this.dataService.getContractByName(contract_name);
     this.contract = contract;
+    this.currentUserAddress = this.web3Service.getCurrentAddress();
     console.log(this.contract);
   }
 
@@ -48,34 +55,65 @@ export class AbiListComponent implements OnInit {
     var web3 = this.web3Service.getWeb3();
     var web3API = web3.eth.contract(this.contract.abi).at(this.contract.address);
     this.web3API = web3API;
-
     console.log(this.web3API);
   }
 
-  getNoparamFunctions():void {
-    for(var i = 0; i < this.contract.abi.length; i++){
-      let elem:any = this.contract.abi[i];
-      if(elem.inputs){
-        if(elem.inputs.length == 0 && elem.constant) {
-          if(elem.name) this.stats.push(elem);
-        }
-      }
-    }
+  /**
+   * filters contract abi and picks elems based on:
+   * CONSTANT
+   * NO INPUT PARAMS
+   */
+  getConstants():void {
+    var abi:any = this.contract.abi;
+    this.stats = abi.filter(
+      elem => elem.constant &&
+              elem.inputs.length == 0
+    );
   }
 
-  callWeb3Functions():void {
+  /**
+   * filters contract abi and picks elems based on:
+   * FIRST PARAM ADDRESS
+   */
+  getUserData():void {
+    var abi:any = this.contract.abi;
+    this.userData = abi.filter(
+      elem => elem.inputs &&
+              elem.inputs.length == 1 &&
+              elem.inputs[0].type &&
+              elem.inputs[0].type == "address" &&
+              elem.type != "event" &&
+              elem.constant
+    );
+    console.log("userdata: ",this.userData);
+  }
+
+  parseUserData():void {
     var that = this;
-    console.log(this.stats);
-    for(let i = 0; i < this.stats.length; i++){
-      let elem:any = this.stats[i];
-      this.web3API[elem.name](function(err, res){
-        var r;
-        if(BigNumber.isBigNumber(res)) r = res.toNumber();
-        else r = res;
-        that.stats[i]["val"] = r;
+    for(let i = 0; i < this.userData.length; i++){
+      this.web3API[this.userData[i].name](that.web3Service.getCurrentAddress(), function(err, res){
+        that.userData[i]["val"] = that.formatData(res);
         that._ngZone.run(() => {});
       });
     }
+  }
+
+  parseConstants():void {
+    var that = this;
+    for(let i = 0; i < this.stats.length; i++){
+      this.web3API[this.stats[i].name](function(err, res){
+        that.stats[i]["val"] = that.formatData(res);
+        that._ngZone.run(() => {});
+      });
+    }
+  }
+
+
+
+  formatData(_data:any):void {
+    var output = _data;
+    if(BigNumber.isBigNumber(_data)) output = _data.toNumber();
+    return output;
   }
 
   goBack():void{

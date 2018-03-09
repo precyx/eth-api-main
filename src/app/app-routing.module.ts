@@ -10,6 +10,7 @@ const routes: Routes = [
   {path: 'main', component: ContractOverviewComponent},
   {path: 'main/:name', component: AbiOverviewComponent},
   {path: 'main/:name/stats', component: AbiListComponent},
+  {path: 'main/:name/user', component: AbiListComponent},
   {path: 'main/:name/fn/:id', component: AbiDetailComponent},
   {path: 'main/:name/fn/:id/block-explorer', component: AbiDetailComponent}
 ];
