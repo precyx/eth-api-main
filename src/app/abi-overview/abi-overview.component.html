@@ -8,7 +8,13 @@
   <a (click)="goBack()" class="back_btn">
     <
   </a>
-  <h1>{{contract.name}} <span class="count">({{contract_abi.length}})</span></h1>
+  <h1>{{contract.name}}</h1>
+</div>
+
+<!-- abi groups -->
+<div class="abi_groups">
+  <app-debug [data]="contract_abi"></app-debug>
+  <a class="io_elem tile_btn highlight" routerLink="stats">Stats</a>
 </div>
 
 <!-- filterbar -->
@@ -40,13 +46,10 @@
   </div>
 </div>
 
-<!-- abi groups -->
-<div class="abi_groups">
-  <app-debug [data]="contract_abi"></app-debug>
-  <a class="io_elem tile_btn highlight" routerLink="stats">Abi List</a>
-</div>
+
 
 <!-- abi function list -->
+<h2>ABI Functions <span class="count">({{contract_abi.length}})</span></h2>
 <div class="io_list">
   <a class="io_elem tile_btn"
      *ngFor="let io of contract_abi; let i = index"

@@ -1,0 +1,7 @@
+
+/* titlebar */
+.titlebar .contract_name {margin-left: 10px; color: grey;}
+
+.stat {margin-bottom: 10px; display: flex; border-bottom: 1px solid #e8e8e8; padding-bottom: 10px;}
+.stat .key {width:200px; }
+.stat .val {font-weight: bold;}

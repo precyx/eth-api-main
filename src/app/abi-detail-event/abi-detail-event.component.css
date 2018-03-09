@@ -1,7 +1,6 @@
 /* general */
 .example-full-width {width:100%;}
 .card { box-shadow: 0 2px 10px #00000030; padding: 30px; margin-bottom: 30px; border-radius: 8px;}
-.count {color: #bdbdbd; font-weight: normal;}
 
 /* event data */
 .eventData { display: flex; align-items: left; flex-direction: column; }

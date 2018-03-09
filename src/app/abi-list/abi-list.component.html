@@ -1,3 +1,26 @@
-<p>
-  abi-list works!
-</p>
+
+
+<!-- backtracker bar -->
+<div class="backtracker_bar">
+  {{contract.name}} > <b>Stats</b>
+</div>
+
+<!-- titlebar -->
+<div class="titlebar">
+  <a (click)="goBack()" class="back_btn">
+    <
+  </a>
+  <h1>{{contract.name}}</h1>
+</div>
+
+
+<div class="card">
+  <h2>Stats <span class="count">({{stats.length}})</span></h2>
+  <div class="stat" *ngFor="let fn of stats">
+    <span class="key">{{fn.name}}</span> <span class="val">{{fn.val}}</span>
+  </div>
+  <div class="stat" *ngFor="let r of noParamResults">
+    {{r}}
+  </div>
+
+</div>

@@ -30,13 +30,13 @@ export class AbiDetailComponent implements OnInit {
     private _ngZone: NgZone) {}
 
   ngOnInit() {
-    this.getAbiFunction();
+    this.getData();
     this.initWeb3();
 
     //this.testBlockLoop();
   }
 
-  getAbiFunction():void{
+  getData():void{
     const contract_name:string = this.route.snapshot.paramMap.get('name');
     const abi_fn_id:number = +this.route.snapshot.paramMap.get('id');
     const contract:Contract = this.dataService.getContractByName(contract_name);
