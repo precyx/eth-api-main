@@ -1,6 +1,8 @@
-.contracts {margin-bottom: 40px;}
-.contract {margin-right: 10px; margin-bottom: 10px;}
-.contract .network {display: flex; margin-left: 5px; font-weight: bold;}
+.contracts {margin-bottom: 40px; display: flex; align-items: left; flex-wrap: wrap; flex-flow: column;}
+.contract {margin-right: 20px; margin-bottom: 20px; background:white; border:none; border-radius: 8px;}
+.contract {border:none; color: #009ce8; font-size: 18px;}
+.contract { box-shadow: 0 2px 2px 0 rgba(0,0,0,.0466667), 0 3px 1px -2px rgba(0,0,0,.0666667), 0 1px 5px 0 rgba(0,0,0,.04);}
+.contract .network {display: flex; margin-left: 10px; font-weight: bold;}
 .contract .network.mainnet:after { content: "M"; color:#038789;  }
 .contract .network.rinkeby:after { content: "R"; color:#EBB33F;  }
 

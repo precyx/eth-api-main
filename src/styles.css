@@ -21,6 +21,7 @@ transition: all 0.2s ease; }
 
 
 /* CUSTOM */
+body {background:#fbfbfb;}
 .main {margin-top:20px; margin-bottom: 400px!important;}
 
 
@@ -54,7 +55,7 @@ body.grey {background: #eaeaea;}
 /* Typography */
 html, body {font-family: Arial, Helvetica, sans-serif;}
 h1{font-size: 32px; line-height: 140%; margin-bottom: 20px; color: #333; }
-h2{font-size: 24px; color: #333; line-height: 130%; margin-bottom: 20px;  }
+h2{font-size: 20px; color: #333; line-height: 130%; margin-bottom: 20px;  }
 h3{font-size: 18px; color: #666; margin-bottom: 10px; line-height: 140%;}
 h4{}
 h5{}
