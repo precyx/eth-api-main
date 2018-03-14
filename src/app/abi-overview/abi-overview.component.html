@@ -1,6 +1,6 @@
 <!-- backtracker bar -->
 <div class="backtracker_bar">
-  {{contract.name}}
+  {{project.name}} > {{contract.name}}
 </div>
 
 <!-- titlebar -->
@@ -8,6 +8,9 @@
   <a routerLink="/main/{{project.url}}" class="back_btn">
     <
   </a>
+  <div class="mm_project_icon">
+    <img src="{{project.img}}">
+  </div>
   <h1>{{contract.name}}</h1>
 </div>
 
@@ -15,8 +18,6 @@
 <div class="abi_groups">
   <app-debug [data]="contract_abi"></app-debug>
   <a class="io_elem tile_btn highlight" routerLink="stats">Stats</a>
-  <a class="io_elem tile_btn highlight" routerLink="user">User</a>
-  <a class="io_elem tile_btn highlight" routerLink="events">Events</a>
 </div>
 
 <!-- filterbar -->

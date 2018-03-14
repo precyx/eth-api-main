@@ -44,6 +44,7 @@ export class AbiDetailComponent implements OnInit {
     const contractName:string = this.route.snapshot.paramMap.get('contractName');
     const abi_fn_id:number = +this.route.snapshot.paramMap.get('abiID');
     const project:Project = this.dataService.getProjectByName(projectName);
+    this.project = project;
     const contract:Contract = this.dataService.getContractByName(project, contractName);
     this.contract = contract;
     const abiFunction:any = this.dataService.getAbiFunctionOfContract(contract, abi_fn_id);

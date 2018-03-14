@@ -19,7 +19,7 @@
 /* filterbar */
 .filterbar {margin-bottom: 20px; }
 .filterbar .btn {margin-right: 5px; transition: none;}
-.filterbar .ghost_btn.mini{border:none; border-bottom: 2px solid #c778ff00; color:#c778ff;}
+.filterbar .ghost_btn.mini{border:none; border-bottom: 2px solid #c778ff00; background: #ededed; color: #656565;}
 .filterbar .ghost_btn.mini{padding:4px 8px; font-weight: 400; border-width:1px;}
 .filterbar .filter_btn.active { font-weight: bold; border-bottom: 2px solid;}
 
