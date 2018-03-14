@@ -11,6 +11,7 @@ import { AppRoutingModule }           from './app-routing.module';
 
 import { HeadbarComponent }           from './headbar/headbar.component';
 import { KikoFormFieldComponent }     from './kiko-form-field/kiko-form-field.component';
+import { ProjectOverviewComponent } from './project-overview/project-overview.component';
 import { AbiOverviewComponent }       from './abi-overview/abi-overview.component';
 import { AbiDetailComponent }         from './abi-detail/abi-detail.component';
 import { AbiDetailEventComponent }    from './abi-detail-event/abi-detail-event.component';
@@ -25,6 +26,8 @@ import { Web3Service }                from './web3.service';
 
 import { SafeUrlPipe }                from './shared/security/safe-url.pipe';
 import { TimeagoService }             from './services/timeago.service';
+import { KikoTitlebarComponent } from './kiko-titlebar/kiko-titlebar.component';
+
 
 
 
@@ -43,10 +46,12 @@ import { TimeagoService }             from './services/timeago.service';
     HeadbarComponent,
     KikoFormFieldComponent,
     AbiOverviewComponent,
+    ProjectOverviewComponent,
     NewContractComponent,
     ContractOverviewComponent,
     DebugComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    KikoTitlebarComponent
   ],
   imports: [
     BrowserModule,

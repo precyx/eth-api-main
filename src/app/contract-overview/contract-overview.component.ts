@@ -3,6 +3,7 @@ import { ActivatedRoute }           from '@angular/router';
 import { Location }                 from '@angular/common';
 import { DataService }              from '../data.service';
 import { Contract }                 from '../classes/Contract';
+import { Project }                  from '../classes/Project';
 
 @Component({
   selector: 'app-contract-overview',
@@ -11,22 +12,23 @@ import { Contract }                 from '../classes/Contract';
 })
 export class ContractOverviewComponent implements OnInit {
 
+  project:Project;
   contracts:Array<Contract>;
-  contract:Contract;
 
   constructor(
       private dataService:DataService,
       private route:ActivatedRoute,
-      private location:Location) { }
+      private location:Location) {}
 
   ngOnInit() {
-    this.contracts = this.dataService.getContracts();
     this.getContract();
   }
 
   getContract(){
-    const name = this.route.snapshot.paramMap.get('name');
-    this.contract = this.dataService.getContractByName(name);
+    const projectName = this.route.snapshot.paramMap.get('projectName');
+    this.project = this.dataService.getProjectByName(projectName);
+    this.contracts = this.project.contracts;
   }
+
 
 }

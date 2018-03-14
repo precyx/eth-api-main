@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Contract }   from './classes/Contract';
+import { Project }    from './classes/Project';
 
 @Injectable()
 export class DataService {
@@ -110,36 +111,63 @@ export class DataService {
   /* AxiePresaleExtended */
   axie_infinity_presale_extended:Array<object> = [{constant:!0,inputs:[{name:"",type:"uint8"}],name:"priceIncrement",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"INITIAL_PRICE_INCREMENT",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"contractAddr",type:"address"}],name:"reclaimContract",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[],name:"unpause",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"CLASS_BEAST",outputs:[{name:"",type:"uint8"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"redemptionAddress",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"numBountyCredits",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"paused",outputs:[{name:"",type:"bool"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"presaleContract",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"INITIAL_PRICE",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"CLASS_PLANT",outputs:[{name:"",type:"uint8"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[{name:"",type:"uint8"}],name:"currentPrice",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[],name:"pause",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[],name:"owner",outputs:[{name:"",type:"address"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"PRESALE_END_TIMESTAMP",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"REF_CREDITS_PER_AXIE",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"MAX_TOTAL_ADOPTED_AXIES",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[],name:"CLASS_AQUATIC",outputs:[{name:"",type:"uint8"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"newOwner",type:"address"}],name:"transferOwnership",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{inputs:[],payable:!0,stateMutability:"payable",type:"constructor"},{payable:!0,stateMutability:"payable",type:"fallback"},{anonymous:!1,inputs:[{indexed:!0,name:"_adopter",type:"address"},{indexed:!0,name:"_class",type:"uint8"},{indexed:!1,name:"_quantity",type:"uint256"},{indexed:!0,name:"_referrer",type:"address"}],name:"AxiesAdopted",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_receiver",type:"address"},{indexed:!1,name:"_quantity",type:"uint256"}],name:"AxiesRewarded",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_receiver",type:"address"},{indexed:!0,name:"_class",type:"uint8"},{indexed:!1,name:"_quantity",type:"uint256"}],name:"AdoptedAxiesRedeemed",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_receiver",type:"address"},{indexed:!1,name:"_quantity",type:"uint256"}],name:"RewardedAxiesRedeemed",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"_receiver",type:"address"},{indexed:!1,name:"_numMintedCredits",type:"uint256"}],name:"RefCreditsMinted",type:"event"},{anonymous:!1,inputs:[],name:"Pause",type:"event"},{anonymous:!1,inputs:[],name:"Unpause",type:"event"},{anonymous:!1,inputs:[{indexed:!0,name:"previousOwner",type:"address"},{indexed:!0,name:"newOwner",type:"address"}],name:"OwnershipTransferred",type:"event"},{constant:!1,inputs:[],name:"reclaimEther",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_presaleAddress",type:"address"}],name:"initialize",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_redemptionAddress",type:"address"}],name:"setRedemptionAddress",outputs:[],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!0,inputs:[{name:"_class",type:"uint8"},{name:"_deduction",type:"bool"}],name:"totalAdoptedAxies",outputs:[{name:"_number",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[{name:"_owner",type:"address"},{name:"_class",type:"uint8"},{name:"_deduction",type:"bool"}],name:"numAdoptedAxies",outputs:[{name:"_number",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[{name:"_owner",type:"address"},{name:"_deduction",type:"bool"}],name:"numRefCredits",outputs:[{name:"_number",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[{name:"_deduction",type:"bool"}],name:"totalRewardedAxies",outputs:[{name:"_number",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[{name:"_owner",type:"address"},{name:"_deduction",type:"bool"}],name:"numRewardedAxies",outputs:[{name:"_number",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!0,inputs:[{name:"_beastQuantity",type:"uint256"},{name:"_aquaticQuantity",type:"uint256"},{name:"_plantQuantity",type:"uint256"}],name:"axiesPrice",outputs:[{name:"_totalPrice",type:"uint256"}],payable:!1,stateMutability:"view",type:"function"},{constant:!1,inputs:[{name:"_beastQuantity",type:"uint256"},{name:"_aquaticQuantity",type:"uint256"},{name:"_plantQuantity",type:"uint256"},{name:"_referrer",type:"address"}],name:"adoptAxies",outputs:[],payable:!0,stateMutability:"payable",type:"function"},{constant:!1,inputs:[{name:"_receiver",type:"address"},{name:"_numMintedCredits",type:"uint256"}],name:"mintRefCredits",outputs:[{name:"",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_receiver",type:"address"},{name:"_beastQuantity",type:"uint256"},{name:"_aquaticQuantity",type:"uint256"},{name:"_plantQuantity",type:"uint256"}],name:"redeemAdoptedAxies",outputs:[{name:"",type:"uint256"},{name:"",type:"uint256"},{name:"",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"function"},{constant:!1,inputs:[{name:"_receiver",type:"address"},{name:"_quantity",type:"uint256"}],name:"redeemRewardedAxies",outputs:[{name:"_remainingQuantity",type:"uint256"}],payable:!1,stateMutability:"nonpayable",type:"function"}];
 
-  contracts:Array<Contract> = [
-    {name:'Etherbots Beta V1 -  EtherbotsCore', url:'etherbots-core', network:'rinkeby', address:'0x8063a39dd357165e04f12431ff3d67a5c9d3b7b4', abi:this.etherbots_core_abi},
-    {name:'Etherbots Beta V4 - TwoPlayerCommitRevealBattle', url:'eb4-two-player-commit-reveal-battle', network:'rinkeby', address:'0x0798ebc2e21173c8da94f78021c964015f719666', abi:this.etherbotsBetaV4_TwoPlayerCommitRevealBattle},
-    {name:'Etherbots Beta V4 - EtherbotsCore', url:'eb4-core', network:'rinkeby', address:'0xf8438e3d67ad324014f70f13d3d3e251a1807665', abi:this.etherbotsBetaV4_EtherbotsCore},
-    {name:'Etherbots Beta V4 - NewCratePreSale', url:'eb4-new-crate-pre-sale', network:'rinkeby', address:'0x3602bca726662d6246d2a5472208bb9a75a25f22', abi:this.etherbotsBetaV4_NewCratePreSale},
-    {name:'Etherbots Beta V4 - DutchAuction', url:'eb4-dutch-auction', network:'rinkeby', address:'0x3e14d24e27ebe851b1a17045304f6a437bc21c12', abi:this.etherbotsBetaV4_DutchAuction},
-    {name:'Etherbots LIVE - TwoPlayerCommitRevealBattle', url:'eb-live-two-player-commit-reveal-battle', network:'mainnet', address:'0x9600fbd9dd97407c5230a6fb4ce1a1bce388e894', abi:this.etherbots_v1_TwoPlayerCommitRevealBattle},
-    {name:'Etherbots LIVE - EtherbotsCore', url:'eb-live-core', network:'mainnet', address:'0xd2f81cd7a20d60c0d558496c7169a20968389b40', abi:this.etherbots_v1_EtherbotsCore},
-    {name:'Etherbots LIVE - DutchAuction', url:'eb-live-dutch-auction', network:'mainnet', address:'0x98ecf84ac50aa3c090f88b04676babc296d03527', abi:this.etherbots_v1_DutchAuction},
-    {name:'WOE Presale', url:'woe-presale', network:'mainnet', address:'0x4490f9807965c49a2471bd7b121a80f0b3861e5c', abi:this.woe_presale},
-    {name:'AE Alpha - AethiaAlphaShop', url:'ae-alpha-aethia-alpha-shop', network:'mainnet', address:'0xc0B48e3E53B0Dd99d36b15E2f1C15b52c42f9Bda', abi:this.aethia_alpha_alphashop},
-    {name:'AE Alpha - AethiaPlayHouseV2', url:'ae-alpha-aethia-playhousev2', network:'mainnet', address:'0xD8e2f0300Ebc83652472e5793220c5dE5ebD7456', abi:this.aethia_alpha_playhousev2},
-    {name:'AE Alpha - AethianCrystalBank', url:'ae-alpha-aethian-crystal-bank', network:'mainnet', address:'0x045E8EE37b1dC4681805725f226E489c0AC93f04', abi:this.aethia_alpha_aethian_crystal_bank},
-    {name:'AE Alpha - ChiToken', url:'ae-alpha-chi-token', network:'mainnet', address:'0x71E1f8E809Dc8911FCAC95043bC94929a36505A5', abi:this.aethia_alpha_chi_token},
-    {name:'AE Alpha - EthergotchiAlphaHatchery', url:'ae-alpha-ethergotchi-alpha-hatchery', network:'mainnet', address:'0xe662aA54F40eE21DA63a82944d4485Bdaf5a6be5', abi:this.aethia_alpha_ethergotchi_alpha_hatchery},
-    {name:'AE Alpha - EthergotchiAuctionHouse', url:'ae-alpha-ethergotchi-auction-house', network:'mainnet', address:'0x21d87acf5fc40fc1abd17573774555c7ca5d84b1', abi:this.aethia_alpha_ethergotchi_auction_house},
-    {name:'AE Alpha - EthergotchiCoreData', url:'ae-alpha-ethergotchi-core-data', network:'mainnet', address:'0xacAF040948d663e146C330cc03FA4619CA57Ec43', abi:this.aethia_alpha_ethergotchi_core_data},
-    {name:'AE Alpha - EthergotchiData', url:'ae-alpha-ethergotchi-data', network:'mainnet', address:'0x0bCB62316399d11669da271eae35B402db88DFB5', abi:this.aethia_alpha_ethergotchi_data},
-    {name:'AE Alpha - EthergotchiOwnership', url:'ae-alpha-ethergotchi-ownership', network:'mainnet', address:'0x25D466F0e7Da4Ec2F7201309E5416951D1e241a2', abi:this.aethia_alpha_ethergotchi_ownership},
-    {name:'AE Alpha - EthergotchiTeam', url:'ae-alpha-ethergotchi-team', network:'mainnet', address:'0x01369Efd034dBcED80bf8af473A3306362Effb32', abi:this.aethia_alpha_ethergotchi_team},
-    {name:'AE Alpha - ProfessorSnowBoostLab', url:'ae-alpha-professor-snow-boost-lab', network:'mainnet', address:'0x0E44A0b8c63d275e8027795931655cAC431434E6', abi:this.aethia_alpha_professor_snow_boost_lab},
-    {name:'AE Alpha - ProfessorSnowEggPickUp', url:'ae-alpha-professor-snow-egg-pick-up', network:'mainnet', address:'0x19005641B675E3f16286c2D8EE3E8eCd16bDbBF2', abi:this.aethia_alpha_professor_snow_egg_pick_up},
-    {name:'AI V1 - AxieRedemption', url:'ai-axie-infinity-axie-redemption', network:'mainnet', address:'0xf78dBC37A67018dB6F823Ec5090D7EEdD5bab6fD', abi:this.axie_infinity_axie_redemption},
-    {name:'AI V1 - AxiePresaleExtended', url:'ai-axie-infinity-presale-extended', network:'mainnet', address:'0x3d5be9a472d6b5c8d45b4b3a3bffb80e0c52ef15', abi:this.axie_infinity_presale_extended},
+  /* Contracts Etherbots */
+  contracts_etherbots:Array<Contract> = [
+    {name:'EtherbotsCore', version:'Beta V1', url:'etherbots-core', network:'rinkeby', address:'0x8063a39dd357165e04f12431ff3d67a5c9d3b7b4', abi:this.etherbots_core_abi},
+    {name:'TwoPlayerCommitRevealBattle', version:'Beta V4', url:'eb4-two-player-commit-reveal-battle', network:'rinkeby', address:'0x0798ebc2e21173c8da94f78021c964015f719666', abi:this.etherbotsBetaV4_TwoPlayerCommitRevealBattle},
+    {name:'EtherbotsCore', version:'Beta V4', url:'eb4-core', network:'rinkeby', address:'0xf8438e3d67ad324014f70f13d3d3e251a1807665', abi:this.etherbotsBetaV4_EtherbotsCore},
+    {name:'NewCratePreSale', version:'Beta V4', url:'eb4-new-crate-pre-sale', network:'rinkeby', address:'0x3602bca726662d6246d2a5472208bb9a75a25f22', abi:this.etherbotsBetaV4_NewCratePreSale},
+    {name:'DutchAuction', version:'Beta V4', url:'eb4-dutch-auction', network:'rinkeby', address:'0x3e14d24e27ebe851b1a17045304f6a437bc21c12', abi:this.etherbotsBetaV4_DutchAuction},
+    {name:'TwoPlayerCommitRevealBattle', version:'LIVE', url:'eb-live-two-player-commit-reveal-battle', network:'mainnet', address:'0x9600fbd9dd97407c5230a6fb4ce1a1bce388e894', abi:this.etherbots_v1_TwoPlayerCommitRevealBattle},
+    {name:'EtherbotsCore', version:'LIVE', url:'eb-live-core', network:'mainnet', address:'0xd2f81cd7a20d60c0d558496c7169a20968389b40', abi:this.etherbots_v1_EtherbotsCore},
+    {name:'DutchAuction', version:'LIVE', url:'eb-live-dutch-auction', network:'mainnet', address:'0x98ecf84ac50aa3c090f88b04676babc296d03527', abi:this.etherbots_v1_DutchAuction},
+  ];
+
+  /* Contract World of Ether */
+  contracts_world_of_ether:Array<Contract> = [
+    {name:'Presale', version:'V1', url:'woe-presale', network:'mainnet', address:'0x4490f9807965c49a2471bd7b121a80f0b3861e5c', abi:this.woe_presale},
+  ];
+
+  /* Contracts Aethia */
+  contracts_aethia:Array<Contract> = [
+    {name:'AethiaAlphaShop', version:'Alpha', url:'ae-alpha-aethia-alpha-shop', network:'mainnet', address:'0xc0B48e3E53B0Dd99d36b15E2f1C15b52c42f9Bda', abi:this.aethia_alpha_alphashop},
+    {name:'AethiaPlayHouseV2', version:'Alpha', url:'ae-alpha-aethia-playhousev2', network:'mainnet', address:'0xD8e2f0300Ebc83652472e5793220c5dE5ebD7456', abi:this.aethia_alpha_playhousev2},
+    {name:'AethianCrystalBank', version:'Alpha', url:'ae-alpha-aethian-crystal-bank', network:'mainnet', address:'0x045E8EE37b1dC4681805725f226E489c0AC93f04', abi:this.aethia_alpha_aethian_crystal_bank},
+    {name:'ChiToken', version:'Alpha', url:'ae-alpha-chi-token', network:'mainnet', address:'0x71E1f8E809Dc8911FCAC95043bC94929a36505A5', abi:this.aethia_alpha_chi_token},
+    {name:'EthergotchiAlphaHatchery', version:'Alpha', url:'ae-alpha-ethergotchi-alpha-hatchery', network:'mainnet', address:'0xe662aA54F40eE21DA63a82944d4485Bdaf5a6be5', abi:this.aethia_alpha_ethergotchi_alpha_hatchery},
+    {name:'EthergotchiAuctionHouse', version:'Alpha', url:'ae-alpha-ethergotchi-auction-house', network:'mainnet', address:'0x21d87acf5fc40fc1abd17573774555c7ca5d84b1', abi:this.aethia_alpha_ethergotchi_auction_house},
+    {name:'EthergotchiCoreData', version:'Alpha', url:'ae-alpha-ethergotchi-core-data', network:'mainnet', address:'0xacAF040948d663e146C330cc03FA4619CA57Ec43', abi:this.aethia_alpha_ethergotchi_core_data},
+    {name:'EthergotchiData', version:'Alpha', url:'ae-alpha-ethergotchi-data', network:'mainnet', address:'0x0bCB62316399d11669da271eae35B402db88DFB5', abi:this.aethia_alpha_ethergotchi_data},
+    {name:'EthergotchiOwnership', version:'Alpha', url:'ae-alpha-ethergotchi-ownership', network:'mainnet', address:'0x25D466F0e7Da4Ec2F7201309E5416951D1e241a2', abi:this.aethia_alpha_ethergotchi_ownership},
+    {name:'EthergotchiTeam', version:'Alpha', url:'ae-alpha-ethergotchi-team', network:'mainnet', address:'0x01369Efd034dBcED80bf8af473A3306362Effb32', abi:this.aethia_alpha_ethergotchi_team},
+    {name:'ProfessorSnowBoostLab', version:'Alpha', url:'ae-alpha-professor-snow-boost-lab', network:'mainnet', address:'0x0E44A0b8c63d275e8027795931655cAC431434E6', abi:this.aethia_alpha_professor_snow_boost_lab},
+    {name:'ProfessorSnowEggPickUp', version:'Alpha', url:'ae-alpha-professor-snow-egg-pick-up', network:'mainnet', address:'0x19005641B675E3f16286c2D8EE3E8eCd16bDbBF2', abi:this.aethia_alpha_professor_snow_egg_pick_up},
+  ];
+
+  /* Contract Axie Infinity */
+  contracts_axie_infinity:Array<Contract> = [
+    {name:'AxieRedemption', version:'Presale', url:'ai-axie-infinity-axie-redemption', network:'mainnet', address:'0xf78dBC37A67018dB6F823Ec5090D7EEdD5bab6fD', abi:this.axie_infinity_axie_redemption},
+    {name:'AxiePresaleExtended', version:'Presale', url:'ai-axie-infinity-presale-extended', network:'mainnet', address:'0x3d5be9a472d6b5c8d45b4b3a3bffb80e0c52ef15', abi:this.axie_infinity_presale_extended},
+  ];
+
+  projects:Array<Project> = [
+    {name:'Etherbots', url:'etherbots', img:'assets/img/icons/etherbots.svg', contracts:this.contracts_etherbots},
+    {name:'World of Ether', url:'woe', img:'assets/img/icons/world_of_ether.svg', contracts:this.contracts_world_of_ether},
+    {name:'Aethia', url:'aethia', img:'assets/img/icons/aethia.svg', contracts:this.contracts_aethia},
+    {name:'Axie Infinity', url:'axie-infinity', img:'assets/img/icons/axie_infinity.svg', contracts:this.contracts_axie_infinity},
   ];
 
   /* selected data is gonna be displayed */
   SELECTED_DATA:Array<object> = this.etherbots_core_abi;
 
   constructor() { }
+
+
+  getProjectByName(projectName:string):Project {
+    return this.projects.find(function(elem,i){
+      return elem.url == projectName;
+    });
+  }
 
   getData():object[]{
     return this.SELECTED_DATA;
@@ -151,12 +179,8 @@ export class DataService {
       });
   }
 
-  getContracts():Array<Contract>{
-    return this.contracts;
-  }
-
-  getContractByName(name:string):Contract{
-    return this.contracts.find(function(elem, index){
+  getContractByName(project:Project, name:string):Contract{
+    return project.contracts.find(function(elem, i){
       return name == elem.url;
     });
   }

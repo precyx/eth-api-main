@@ -3,6 +3,7 @@ import { DataService }       from '../data.service';
 import { ActivatedRoute }    from '@angular/router';
 import { Location }          from '@angular/common';
 import { Contract }          from '../classes/Contract';
+import { Project }           from '../classes/Project';
 
 @Component({
   selector: 'app-abi-overview',
@@ -11,6 +12,7 @@ import { Contract }          from '../classes/Contract';
 })
 export class AbiOverviewComponent implements OnInit {
 
+  project:Project;
   contract:Contract;
   contract_abi:Array<object>;
 
@@ -28,8 +30,11 @@ export class AbiOverviewComponent implements OnInit {
     }
 
     getContractAbi(){
-      var name = this.route.snapshot.paramMap.get('name');
-      this.contract = this.dataService.getContractByName(name);
+      var projectName = this.route.snapshot.paramMap.get('projectName');
+      var contractName = this.route.snapshot.paramMap.get('contractName');
+      //
+      this.project = this.dataService.getProjectByName(projectName);
+      this.contract = this.dataService.getContractByName(this.project, contractName);
       // append ID for routing
       var c:any = this.contract.abi;
       for(var i = 0; i < c.length; i++){

@@ -1,0 +1,8 @@
+<div class="projects">
+  <a routerLink="{{project.url}}" class="project" *ngFor="let project of projects">
+    <div class="card">
+      <img src="{{project.img}}">
+    </div>
+    <p class="name">{{project.name}}</p>
+  </a>
+</div>

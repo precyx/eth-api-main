@@ -7,6 +7,7 @@ import { NgZone }                   from '@angular/core';
 import { DataService }              from '../data.service';
 import { Web3Service }              from '../web3.service';
 import { Contract }                 from '../classes/Contract';
+import { Project }                 from '../classes/Project';
 
 import { BigNumber }                from "bignumber.js";
 
@@ -18,7 +19,10 @@ import { BigNumber }                from "bignumber.js";
 export class AbiListComponent implements OnInit {
 
   /* Objects */
+  project:Project;
   contract:Contract;
+
+
   web3API:any;
   stats:any = [];
   userData:any = [];
@@ -44,11 +48,11 @@ export class AbiListComponent implements OnInit {
   }
 
   getData():void{
-    const contract_name:string = this.route.snapshot.paramMap.get('name');
-    const contract:Contract = this.dataService.getContractByName(contract_name);
-    this.contract = contract;
+    const projectName:string = this.route.snapshot.paramMap.get('projectName');
+    const contractName:string = this.route.snapshot.paramMap.get('contractName');
+    this.project = this.dataService.getProjectByName(projectName);
+    this.contract = this.dataService.getContractByName(this.project, contractName);
     this.currentUserAddress = this.web3Service.getCurrentAddress();
-    console.log(this.contract);
   }
 
   initWeb3():void{

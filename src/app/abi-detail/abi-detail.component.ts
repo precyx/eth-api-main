@@ -8,6 +8,7 @@ import { NgZone }                   from '@angular/core';
 import { DataService }              from '../data.service';
 import { Web3Service }              from '../web3.service';
 import { Contract }                 from '../classes/Contract';
+import { Project }                  from '../classes/Project';
 
 
 @Component({
@@ -17,8 +18,9 @@ import { Contract }                 from '../classes/Contract';
 })
 export class AbiDetailComponent implements OnInit {
   /* Objects*/
-  abi_function:any;
+  project:Project;
   contract:Contract;
+  abi_function:any;
   web3API:any;
 
 
@@ -38,9 +40,11 @@ export class AbiDetailComponent implements OnInit {
   }
 
   getData():void{
-    const contract_name:string = this.route.snapshot.paramMap.get('name');
-    const abi_fn_id:number = +this.route.snapshot.paramMap.get('id');
-    const contract:Contract = this.dataService.getContractByName(contract_name);
+    const projectName:string = this.route.snapshot.paramMap.get('projectName');
+    const contractName:string = this.route.snapshot.paramMap.get('contractName');
+    const abi_fn_id:number = +this.route.snapshot.paramMap.get('abiID');
+    const project:Project = this.dataService.getProjectByName(projectName);
+    const contract:Contract = this.dataService.getContractByName(project, contractName);
     this.contract = contract;
     const abiFunction:any = this.dataService.getAbiFunctionOfContract(contract, abi_fn_id);
     this.abi_function = abiFunction;

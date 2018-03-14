@@ -1,11 +1,22 @@
-<h1>Contracts <span class="count">({{contracts.length}})</span></h1>
+<!-- titlebar -->
+<div class="titlebar">
+  <a routerLink="/main" class="back_btn"><</a>
+  <h1>{{project.name}} </h1>
+</div>
+
 <div class="contracts">
+  <h2 class="subtitle">Contracts <span class="count">({{contracts.length}})</span></h2>
   <a class="contract tile_btn"
        *ngFor="let contract of contracts"
        routerLink="{{contract.url}}">
-       <div class="name">
-         {{contract.name}}
+       <div class="text">
+         <p class="group first">
+           <span class="network {{contract.network}}"></span>
+           <span class="name">{{contract.name}}</span>
+         </p>
+         <p class="group second">
+           <span class="version">{{contract.version}}</span>
+         </p>
        </div>
-       <div class="network {{contract.network}}"></div>
   </a>
 </div>
