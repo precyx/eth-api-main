@@ -2,15 +2,24 @@
 
 <!-- backtracker bar -->
 <div class="backtracker_bar">
-  {{contract.name}} > <b>Stats</b>
+  {{project.name}} > {{contract.name}} > <b>Stats</b>
 </div>
 
 <!-- titlebar -->
 <div class="titlebar">
-  <a (click)="goBack()" class="back_btn">
+  <a routerLink="/main/{{project.url}}/{{contract.url}}" class="back_btn">
     <
   </a>
   <h1>{{contract.name}}</h1>
+</div>
+
+<!-- contract switcher -->
+<div class="contract_switcher">
+  <div class="contracts">
+    <a (click)="navigate(contract.url)" class="contract" *ngFor="let contract of contracts" [ngClass]="{'active': checkActiveContract(contract)}">
+      {{contract.name}}
+    </a>
+  </div>
 </div>
 
 

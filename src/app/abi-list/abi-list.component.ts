@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute }           from '@angular/router';
+import { ActivatedRoute, Router }   from '@angular/router';
 import { Location }                 from '@angular/common';
 import { ChangeDetectorRef }        from '@angular/core';
 import { NgZone }                   from '@angular/core';
@@ -20,6 +20,7 @@ export class AbiListComponent implements OnInit {
 
   /* Objects */
   project:Project;
+  contracts:Array<Contract>;
   contract:Contract;
 
 
@@ -32,6 +33,7 @@ export class AbiListComponent implements OnInit {
         private dataService:DataService,
         private web3Service:Web3Service,
         private route:ActivatedRoute,
+        private router:Router,
         private location:Location,
         private ref: ChangeDetectorRef,
         private _ngZone: NgZone) { }
@@ -47,10 +49,20 @@ export class AbiListComponent implements OnInit {
     this.parseUserData();
   }
 
+  navigate(contract_name:string):void {
+    this.router.navigateByUrl("/main")
+    .then(()=>{this.router.navigateByUrl("/main/"+this.project.url+"/"+contract_name+"/stats")});
+  }
+
+  checkActiveContract(contract:Contract):boolean{
+    return (this.contract == contract);
+  }
+
   getData():void{
     const projectName:string = this.route.snapshot.paramMap.get('projectName');
     const contractName:string = this.route.snapshot.paramMap.get('contractName');
     this.project = this.dataService.getProjectByName(projectName);
+    this.contracts = this.project.contracts;
     this.contract = this.dataService.getContractByName(this.project, contractName);
     this.currentUserAddress = this.web3Service.getCurrentAddress();
   }

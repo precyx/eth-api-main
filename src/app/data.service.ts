@@ -113,14 +113,20 @@ export class DataService {
 
   /* Contracts Etherbots */
   contracts_etherbots:Array<Contract> = [
-    {name:'EtherbotsCore', version:'Beta V1', url:'etherbots-core', network:'rinkeby', address:'0x8063a39dd357165e04f12431ff3d67a5c9d3b7b4', abi:this.etherbots_core_abi},
+    {name:'TwoPlayerCommitRevealBattle', version:'LIVE', url:'eb-live-two-player-commit-reveal-battle', network:'mainnet', address:'0x9600fbd9dd97407c5230a6fb4ce1a1bce388e894', abi:this.etherbots_v1_TwoPlayerCommitRevealBattle},
+    {name:'EtherbotsCore', version:'LIVE', url:'eb-live-core', network:'mainnet', address:'0xd2f81cd7a20d60c0d558496c7169a20968389b40', abi:this.etherbots_v1_EtherbotsCore},
+    {name:'DutchAuction', version:'LIVE', url:'eb-live-dutch-auction', network:'mainnet', address:'0x98ecf84ac50aa3c090f88b04676babc296d03527', abi:this.etherbots_v1_DutchAuction},
+  ];
+  /* Contracts Etherbots Beta V4*/
+  contracts_etherbots_beta_v4:Array<Contract> = [
     {name:'TwoPlayerCommitRevealBattle', version:'Beta V4', url:'eb4-two-player-commit-reveal-battle', network:'rinkeby', address:'0x0798ebc2e21173c8da94f78021c964015f719666', abi:this.etherbotsBetaV4_TwoPlayerCommitRevealBattle},
     {name:'EtherbotsCore', version:'Beta V4', url:'eb4-core', network:'rinkeby', address:'0xf8438e3d67ad324014f70f13d3d3e251a1807665', abi:this.etherbotsBetaV4_EtherbotsCore},
     {name:'NewCratePreSale', version:'Beta V4', url:'eb4-new-crate-pre-sale', network:'rinkeby', address:'0x3602bca726662d6246d2a5472208bb9a75a25f22', abi:this.etherbotsBetaV4_NewCratePreSale},
     {name:'DutchAuction', version:'Beta V4', url:'eb4-dutch-auction', network:'rinkeby', address:'0x3e14d24e27ebe851b1a17045304f6a437bc21c12', abi:this.etherbotsBetaV4_DutchAuction},
-    {name:'TwoPlayerCommitRevealBattle', version:'LIVE', url:'eb-live-two-player-commit-reveal-battle', network:'mainnet', address:'0x9600fbd9dd97407c5230a6fb4ce1a1bce388e894', abi:this.etherbots_v1_TwoPlayerCommitRevealBattle},
-    {name:'EtherbotsCore', version:'LIVE', url:'eb-live-core', network:'mainnet', address:'0xd2f81cd7a20d60c0d558496c7169a20968389b40', abi:this.etherbots_v1_EtherbotsCore},
-    {name:'DutchAuction', version:'LIVE', url:'eb-live-dutch-auction', network:'mainnet', address:'0x98ecf84ac50aa3c090f88b04676babc296d03527', abi:this.etherbots_v1_DutchAuction},
+  ];
+  /* Contracts Etherbots Beta V1*/
+  contracts_etherbots_beta_v1:Array<Contract> = [
+        {name:'EtherbotsCore', version:'Beta V1', url:'etherbots-core', network:'rinkeby', address:'0x8063a39dd357165e04f12431ff3d67a5c9d3b7b4', abi:this.etherbots_core_abi},
   ];
 
   /* Contract World of Ether */
@@ -155,6 +161,8 @@ export class DataService {
     {name:'World of Ether', url:'woe', img:'assets/img/icons/world_of_ether.svg', contracts:this.contracts_world_of_ether},
     {name:'Aethia', url:'aethia', img:'assets/img/icons/aethia.svg', contracts:this.contracts_aethia},
     {name:'Axie Infinity', url:'axie-infinity', img:'assets/img/icons/axie_infinity.svg', contracts:this.contracts_axie_infinity},
+    {name:'Etherbots Beta V4', url:'eb-beta-v4', img:'assets/img/icons/no_img.svg', contracts:this.contracts_etherbots_beta_v4},
+    {name:'Etherbots Beta V1', url:'eb-beta-v1', img:'assets/img/icons/no_img.svg', contracts:this.contracts_etherbots_beta_v1},
   ];
 
   /* selected data is gonna be displayed */
