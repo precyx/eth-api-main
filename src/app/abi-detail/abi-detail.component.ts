@@ -21,6 +21,7 @@ export class AbiDetailComponent implements OnInit {
   contract:Contract;
   web3API:any;
 
+
   constructor(
     private dataService:DataService,
     private web3Service:Web3Service,
