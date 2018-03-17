@@ -1,6 +1,6 @@
 /* general */
-.tile_btn.highlight {background: #ff3865; border: 2px solid #ff3865; color: white; font-weight: bold; text-transform: uppercase;}
-.tile_btn.highlight:hover {border:2px solid #9a223e; }
+.tile_btn.highlight {background: #ff9528;  color: white; font-weight: bold; text-transform: uppercase;}
+.tile_btn.highlight:hover {}
 
 /* io_list */
 .io_list {display: flex; flex-wrap: wrap; background:white; padding:15px; }
@@ -19,9 +19,9 @@
 /* filterbar */
 .filterbar {margin-bottom: 20px; }
 .filterbar .btn {margin-right: 5px; transition: none;}
-.filterbar .ghost_btn.mini{border:none; border-bottom: 2px solid #c778ff00; background: #ededed; color: #656565;}
+.filterbar .ghost_btn.mini{border:none; border-bottom: 2px solid #c778ff00;  color: #656565;}
 .filterbar .ghost_btn.mini{padding:4px 8px; font-weight: 400; border-width:1px;}
-.filterbar .filter_btn.active { font-weight: bold; border-bottom: 2px solid;}
+.filterbar .filter_btn.active { font-weight: bold; border-bottom: 2px solid; color: #ff9528;}
 
 /* backtracker bar */
 .backtracker_bar {font-size: 12px; color: rgba(0,0,0,0.35); margin:10px 0; font-style: italic;}

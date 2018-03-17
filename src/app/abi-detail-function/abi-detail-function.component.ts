@@ -52,8 +52,10 @@ export class AbiDetailFunctionComponent implements OnInit {
 
   renderAuctionDisplay():void {
     var web4                 = this.web3Service.getWeb3();
-    var etherbotsCoreAbi     = this.dataService.getContractByName("eb-live-core").abi;
-    var etherbotsCoreAddress = this.dataService.getContractByName("eb-live-core").address;
+    var etherbotsProject     = this.dataService.getProjectByName("etherbots");
+    var etherbotsContract    = this.dataService.getContractByName(etherbotsProject, "eb-live-core");
+    var etherbotsCoreAbi     = etherbotsContract.abi;
+    var etherbotsCoreAddress = etherbotsContract.address;
     var web4API              = web4.eth.contract(etherbotsCoreAbi).at(etherbotsCoreAddress);
     //
     var that = this;

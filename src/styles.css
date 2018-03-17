@@ -43,7 +43,8 @@ body {background:#fbfbfb;}
 .card {box-shadow: 0 2px 10px #00000030; padding: 30px; margin-bottom: 30px; border-radius: 8px; background: white;}
 
 /* mm_project_icon */
-.mm_project_icon {display: flex; margin-right:10px; width:50px;}
+.mm_project_icon {display: flex; margin-right:10px; width:50px; max-height: 50px;}
+.mm_project_icon > img{width: 100%;}
 
 /* Material Override */
 .form_io .mat-form-field-underline { background-color: rgba(0, 0, 0, 0.14);}

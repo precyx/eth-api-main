@@ -102,6 +102,9 @@ export class AbiListComponent implements OnInit {
               elem.constant
     );
     console.log("userdata: ",this.userData);
+    for(let i = 0; i == 100; i ++){
+
+    }
   }
 
   parseUserData():void {

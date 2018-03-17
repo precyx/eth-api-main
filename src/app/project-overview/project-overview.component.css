@@ -1,6 +1,11 @@
 /* projects */
 .projects {display: flex; align-items: left; flex-wrap:wrap;}
-.project {cursor: pointer; margin-right: 30px; margin-bottom: 30px;}
-.project .card {width: 200px; height: 200px; background: white;  margin-bottom: 15px; padding: 20px; border-radius: 8px; box-shadow: 0 2px 2px #0003; }
-.project .name { font-size: 14px; color:#333; }
+.project {cursor: pointer; margin-right: 30px; margin-bottom: 30px; }
+.project .card {width: 200px; height: 200px; background: white;  margin-bottom: 15px; padding: 30px; border-radius: 8px; box-shadow: 0 2px 2px #0003; position: relative;}
+.project .name {display: inline-flex; align-items: center; font-size: 14px; color:#333; }
 .project:hover {}
+
+.project .network {display: flex; font-weight: bold; display: flex; align-items: center; font-size: 12px;}
+.project.network1 .network:after {  }
+.project.network1 .network:after { content: "Mainnet"; color:#177cbc;  }
+.project.network4 .network:after { content: "Rinkeby"; color:#F90; }
