@@ -40,20 +40,20 @@ export class AbiDetailComponent implements OnInit {
   }
 
   getData():void{
-    const projectName:string = this.route.snapshot.paramMap.get('projectName');
+    const projectName:string  = this.route.snapshot.paramMap.get('projectName');
     const contractName:string = this.route.snapshot.paramMap.get('contractName');
-    const abi_fn_id:number = +this.route.snapshot.paramMap.get('abiID');
-    const project:Project = this.dataService.getProjectByName(projectName);
-    this.project = project;
-    const contract:Contract = this.dataService.getContractByName(project, contractName);
-    this.contract = contract;
-    const abiFunction:any = this.dataService.getAbiFunctionOfContract(contract, abi_fn_id);
-    this.abi_function = abiFunction;
+    const abi_fn_id:number    = +this.route.snapshot.paramMap.get('abiID');
+    const project:Project     = this.dataService.getProjectByName(projectName);
+    this.project              = project;
+    const contract:Contract   = this.dataService.getContractByName(project, contractName);
+    this.contract             = contract;
+    const abiFunction:any     = this.dataService.getAbiFunctionOfContract(contract, abi_fn_id);
+    this.abi_function         = abiFunction;
   }
 
   initWeb3():void{
-    var web3 = this.web3Service.getWeb3();
-    var web3API = web3.eth.contract(this.contract.abi).at(this.contract.address);
+    var web3     = this.web3Service.getWeb3();
+    var web3API  = new web3.eth.Contract(this.contract.abi, this.contract.address);
     this.web3API = web3API;
   }
 

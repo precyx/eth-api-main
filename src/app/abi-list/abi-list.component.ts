@@ -11,6 +11,9 @@ import { Project }                 from '../classes/Project';
 
 import { BigNumber }                from "bignumber.js";
 
+declare var window:any;
+declare var web3:any;
+
 @Component({
   selector: 'app-abi-list',
   templateUrl: './abi-list.component.html',
@@ -59,19 +62,18 @@ export class AbiListComponent implements OnInit {
   }
 
   getData():void{
-    const projectName:string = this.route.snapshot.paramMap.get('projectName');
-    const contractName:string = this.route.snapshot.paramMap.get('contractName');
-    this.project = this.dataService.getProjectByName(projectName);
-    this.contracts = this.project.contracts;
-    this.contract = this.dataService.getContractByName(this.project, contractName);
-    this.currentUserAddress = this.web3Service.getCurrentAddress();
+    const projectName:string    = this.route.snapshot.paramMap.get('projectName');
+    const contractName:string   = this.route.snapshot.paramMap.get('contractName');
+    this.project                = this.dataService.getProjectByName(projectName);
+    this.contracts              = this.project.contracts;
+    this.contract               = this.dataService.getContractByName(this.project, contractName);
+    this.currentUserAddress     = this.web3Service.currentAddress;
   }
 
   initWeb3():void{
-    var web3 = this.web3Service.getWeb3();
-    var web3API = web3.eth.contract(this.contract.abi).at(this.contract.address);
-    this.web3API = web3API;
-    console.log(this.web3API);
+    var web3      = this.web3Service.getWeb3();
+    var web3API   = new web3.eth.Contract(this.contract.abi, this.contract.address);
+    this.web3API  = web3API;
   }
 
   /**
@@ -80,11 +82,12 @@ export class AbiListComponent implements OnInit {
    * NO INPUT PARAMS
    */
   getConstants():void {
-    var abi:any = this.contract.abi;
+    var abi:any = this.web3API._jsonInterface;
     this.stats = abi.filter(
       elem => elem.constant &&
               elem.inputs.length == 0
     );
+    console.log("stats",this.stats);
   }
 
   /**
@@ -92,7 +95,8 @@ export class AbiListComponent implements OnInit {
    * FIRST PARAM ADDRESS
    */
   getUserData():void {
-    var abi:any = this.contract.abi;
+    var abi:any = this.web3API._jsonInterface;
+    console.log(this.web3API._jsonInterface);
     this.userData = abi.filter(
       elem => elem.inputs &&
               elem.inputs.length == 1 &&
@@ -102,26 +106,27 @@ export class AbiListComponent implements OnInit {
               elem.constant
     );
     console.log("userdata: ",this.userData);
-    for(let i = 0; i == 100; i ++){
-
-    }
   }
 
   parseUserData():void {
     var that = this;
     for(let i = 0; i < this.userData.length; i++){
-      this.web3API[this.userData[i].name](that.web3Service.getCurrentAddress(), function(err, res){
-        that.userData[i]["val"] = that.formatData(res);
-        that._ngZone.run(() => {});
+      window.web3.eth.getAccounts().then(function(res){
+        that.web3API.methods[that.userData[i].name](res[0]).call(function(err, res){
+          that.userData[i]["val"] = that.formatData(res);
+          that._ngZone.run(() => {});
+        });
       });
+
     }
   }
 
   parseConstants():void {
     var that = this;
     for(let i = 0; i < this.stats.length; i++){
-      this.web3API[this.stats[i].name](function(err, res){
+      this.web3API.methods[this.stats[i].name]().call(function(err, res){
         that.stats[i]["val"] = that.formatData(res);
+        console.log("res",err, res);
         that._ngZone.run(() => {});
       });
     }

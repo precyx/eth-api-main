@@ -3,6 +3,7 @@
   <form class="my_form_io">
     <h2>{{abi_function.name}} Events <span class="count">({{eventData.length}})</span> </h2>
 
+
         <!-- event output -->
         <div class="event_interface">
 
@@ -43,7 +44,7 @@
                   {{event.transactionHash}}
                 </div>
                 <div class="argument time" title="{{event.timestamp}}">
-                  {{event.timeago}}
+                  {{getTimeAgo(event.timestamp)}}
                 </div>
               </div>
 

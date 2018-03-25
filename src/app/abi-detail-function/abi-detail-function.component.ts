@@ -56,7 +56,7 @@ export class AbiDetailFunctionComponent implements OnInit {
     var etherbotsContract    = this.dataService.getContractByName(etherbotsProject, "eb-live-core");
     var etherbotsCoreAbi     = etherbotsContract.abi;
     var etherbotsCoreAddress = etherbotsContract.address;
-    var web4API              = web4.eth.contract(etherbotsCoreAbi).at(etherbotsCoreAddress);
+    var web4API              = new web4.eth.Contract(etherbotsCoreAbi, etherbotsCoreAddress);
     //
     var that = this;
     //
@@ -112,27 +112,31 @@ export class AbiDetailFunctionComponent implements OnInit {
     var abi_function_name = this.abi_function.name;
     var params = Object.values(this.params);
     var that = this;
-    var handlerFunction = function(err, res){
-      if(err) console.log(err);
-      else{
-        var out:any = res;
-        console.log(out);
-        if(BigNumber.isBigNumber(out)) out.toNumber();
-        if(out.constructor === Array) out = JSON.stringify(out);
-        var t = new Date();
-        var t2 = ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2) + ":" + ("0" + t.getSeconds()).slice(-2);
-        that.output += "\n" + out + " : " + t2;
-      }
-      that.loading = false;
-      that._ngZone.run(() => {
-        setTimeout(function() {
-          if(that.checkLoop) that.clickButton();
-        }, that.loopInterval);
-      });
-    }
-    params.push(handlerFunction);
-    API[abi_function_name].apply(this, params);
 
+    //params.push(handlerFunction);
+    API.methods[abi_function_name](+params).call(this.parseData);
+  }
+
+  parseData(err,res){
+    console.log("err",err);
+    console.log("res",res.length);
+    if(err) console.log(err);
+    else{
+      var out:any = res;
+      console.log(out);
+      if(BigNumber.isBigNumber(out)) out.toNumber();
+      if(out.constructor === Array) out = JSON.stringify(out);
+      var t = new Date();
+      var t2 = ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2) + ":" + ("0" + t.getSeconds()).slice(-2);
+      this.output += "\n" + out + " : " + t2;
+    }
+    this.loading = false;
+    var that = this;
+    this._ngZone.run(() => {
+      setTimeout(function() {
+        if(that.checkLoop) that.clickButton();
+      }, this.loopInterval);
+    });
   }
 
 }

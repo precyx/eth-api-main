@@ -2,11 +2,13 @@
   <a routerLink="{{project.url}}" class="project network{{project.network}}" *ngFor="let project of projects">
     <div class="card">
       <img src="{{project.img}}">
-
+      <span class="network"></span>
     </div>
-
-    <p class="name">{{project.name}}</p>
-    <span class="network"></span>
-
+    <p class="name"> {{project.name}}</p>
   </a>
+</div>
+
+
+<div class="blockchainExplorer">
+  
 </div>

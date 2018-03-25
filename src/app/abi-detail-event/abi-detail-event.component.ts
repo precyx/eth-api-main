@@ -6,6 +6,9 @@ import { SafeUrlPipe }              from '../shared/security/safe-url.pipe';
 
 import { TimeagoService }           from '../services/timeago.service';
 
+declare var window:any;
+declare var web3:any;
+
 @Component({
   selector: 'app-abi-detail-event',
   templateUrl: './abi-detail-event.component.html',
@@ -20,7 +23,7 @@ export class AbiDetailEventComponent implements OnInit {
 
   /* Event Data */
   eventLog:any;
-  eventData:Array<object> = [];
+  eventData:Array<any> = [];
   eventHeaderData:Array<object>;
 
 
@@ -30,6 +33,10 @@ export class AbiDetailEventComponent implements OnInit {
 
   ngOnInit() {
     this.listenToEvents();
+  }
+
+  getTimeAgo(tstamp){
+    return(this.timeagoService.getTimeAgo(tstamp));
   }
 
 
@@ -44,13 +51,20 @@ export class AbiDetailEventComponent implements OnInit {
      var that = this;
      var API = this.web3API;
      var abi_fn = this.abi_function.name;
-     var Event = API[abi_fn]();
+     console.log();
+     console.log(abi_fn);
+    API.events[abi_fn]({}, function(err, res){
+      console.log("err, ", err);
+      console.log("res, ", res);
+      if(!err) that.parseEventResult(res);
+    });
+     /*var Event = API[abi_fn]();
      console.log(Event);
      Event.watch(function(err, res){
        console.log("err, ", err);
        console.log("res, ", res);
        if(!err) that.parseEventResult(res);
-     });
+     });*/
    }
 
     parseEventResult(res){
@@ -65,9 +79,21 @@ export class AbiDetailEventComponent implements OnInit {
       // add timestamp
       var t = new Date();
       var t2 = ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2) + ":" + ("0" + t.getSeconds()).slice(-2);
-      res.timestamp = t2;
+      res.time = t2;
+      res.timestamp = Date.now().toString();
       res.timeago = this.timeagoService.getTimeAgo( Date.now().toString() );
-      this.eventData.push(res);
+      // check for duplicates
+      var min = Math.max(0, this.eventData.length - 10);
+      var duplicate = false;
+      for(var i = min; i < this.eventData.length; i++){
+        if(res.logIndex == this.eventData[i].logIndex){
+          duplicate = true;
+          console.log("duplicate");
+          break;
+        }
+      }
+      // push
+      if(!duplicate) this.eventData.push(res);
       //
       this._ngZone.run(() => {});
     }

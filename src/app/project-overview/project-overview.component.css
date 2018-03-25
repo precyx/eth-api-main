@@ -1,11 +1,15 @@
 /* projects */
-.projects {display: flex; align-items: left; flex-wrap:wrap;}
-.project {cursor: pointer; margin-right: 30px; margin-bottom: 30px; }
-.project .card {width: 200px; height: 200px; background: white;  margin-bottom: 15px; padding: 30px; border-radius: 8px; box-shadow: 0 2px 2px #0003; position: relative;}
-.project .name {display: inline-flex; align-items: center; font-size: 14px; color:#333; }
-.project:hover {}
+.projects {display: flex; align-items: left; flex-wrap:wrap; background: white; box-shadow: 0 2px 2px #0003; padding: 20px; border-radius: 8px; justify-content: space-between;}
+.projects .project {cursor: pointer;  margin-bottom: 30px; }
+.projects .project .card {width: 200px; height: 200px; box-shadow: none; margin-bottom: 10px; padding: 30px; border-radius: 8px;  position: relative;}
+.projects .project .name {display: inline-block; align-items: center; font-size: 18px; color:#333; text-align: center; width:100%;}
+.projects .project:hover {}
 
-.project .network {display: flex; font-weight: bold; display: flex; align-items: center; font-size: 12px;}
-.project.network1 .network:after {  }
-.project.network1 .network:after { content: "Mainnet"; color:#177cbc;  }
-.project.network4 .network:after { content: "Rinkeby"; color:#F90; }
+.projects .project .network {margin-right: 10px; display: none;}
+.projects .project .network:after { display: flex; align-items: center; justify-content: center; font-size: 12px; color: white; font-weight: bold; width:20px; height: 20px; border-radius: 50%;}
+.projects .project.network1 .network:after { content: "M"; background:#177cbc;  }
+.projects .project.network4 .network:after { content: "R"; background:#F90; }
+
+
+.otherProjects {box-shadow: 0 2px 2px #0003; background:white;}
+.otherProjects .card {box-shadow: none;}

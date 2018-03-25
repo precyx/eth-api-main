@@ -22,7 +22,7 @@
         "styles.css"
       ],
       "scripts": [
-        "lib/web3.min.js"
+        "lib/web3_1.0.0.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

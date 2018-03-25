@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Web3Service } from '../web3.service';
+import { DataService } from '../data.service';
+declare var web3:any;
 
 @Component({
   selector: 'app-headbar',
@@ -11,10 +12,17 @@ export class HeadbarComponent implements OnInit {
 
   currentAddress:string;
 
-  constructor(private web3Service:Web3Service){}
+  constructor(
+    private web3Service:Web3Service,
+    private dataService:DataService
+  ){}
 
   ngOnInit() {
-    this.currentAddress = this.web3Service.getCurrentAddress();
+    let that:any = this;
+    this.web3Service.getCurrentAddress();
+    web3.eth.getAccounts().then(function(res){
+      that.currentAddress = res[0];
+    });
   }
 
 }
