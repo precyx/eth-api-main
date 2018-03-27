@@ -53,8 +53,8 @@ export class AbiListComponent implements OnInit {
   }
 
   navigate(contract_name:string):void {
-    this.router.navigateByUrl("/main")
-    .then(()=>{this.router.navigateByUrl("/main/"+this.project.url+"/"+contract_name+"/stats")});
+    this.router.navigateByUrl("/projects")
+    .then(()=>{this.router.navigateByUrl("/projects/"+this.project.url+"/"+contract_name+"/stats")});
   }
 
   checkActiveContract(contract:Contract):boolean{

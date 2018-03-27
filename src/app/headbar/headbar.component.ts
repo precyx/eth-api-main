@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Web3Service } from '../web3.service';
 import { DataService } from '../data.service';
 declare var web3:any;
+declare var $:any;
 
 @Component({
   selector: 'app-headbar',
@@ -23,6 +24,11 @@ export class HeadbarComponent implements OnInit {
     web3.eth.getAccounts().then(function(res){
       that.currentAddress = res[0];
     });
+  }
+
+  toggleMenu(e):void{
+    console.log(e);
+    $(".menuicon").toggleClass("active");
   }
 
 }

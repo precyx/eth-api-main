@@ -21,3 +21,5 @@
 
 /* no data */
 .no_data {color: rgb(200,200,200); font-size: 12px; font-style: italic; margin: 5px 0;}
+
+.maintanance {color:white; font-style: italic; background: orange; padding: 5px; border-radius: 8px;}

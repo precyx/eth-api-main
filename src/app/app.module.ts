@@ -27,6 +27,7 @@ import { Web3Service }                from './web3.service';
 import { SafeUrlPipe }                from './shared/security/safe-url.pipe';
 import { TimeagoService }             from './services/timeago.service';
 import { KikoTitlebarComponent } from './kiko-titlebar/kiko-titlebar.component';
+import { BlockExplorerComponent } from './block-explorer/block-explorer.component';
 
 
 
@@ -51,7 +52,8 @@ import { KikoTitlebarComponent } from './kiko-titlebar/kiko-titlebar.component';
     ContractOverviewComponent,
     DebugComponent,
     SafeUrlPipe,
-    KikoTitlebarComponent
+    KikoTitlebarComponent,
+    BlockExplorerComponent
   ],
   imports: [
     BrowserModule,

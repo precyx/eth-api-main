@@ -7,7 +7,7 @@
 
 <!-- titlebar -->
 <div class="titlebar">
-  <a routerLink="/main/{{project.url}}/{{contract.url}}" class="back_btn">
+  <a routerLink="/projects/{{project.url}}/{{contract.url}}" class="back_btn">
     <
   </a>
   <div class="mm_project_icon">
@@ -27,10 +27,15 @@
 
 
 <div class="card">
-  <h2>Stats <span class="count">({{stats.length}})</span></h2>
+  <h2>Stats <span class="count">({{stats.length}})</span>
+    <p class="color">
+      Contract: {{contract.address}}
+    </p>
+  </h2>
+
   <div class="stats bb_table">
     <div class="stat bb_row" *ngFor="let fn of stats; let i = index;">
-      <a class="key bb_cell" routerLink="/main/{{contract.url}}/fn/{{i}}">{{fn.name}}</a>
+      <a class="key bb_cell" routerLink="/projects/{{contract.url}}/fn/{{i}}">{{fn.name}}</a>
       <span class="val bb_cell">{{fn.val}}</span>
     </div>
   </div>
@@ -46,7 +51,7 @@
 
   <div class="userdata bb_table">
     <div class="userdat bb_row" *ngFor="let elem of userData; let i = index;">
-      <a class="key bb_cell" routerLink="/main/{{contract.url}}/fn/{{i}}">{{elem.name}}</a>
+      <a class="key bb_cell" routerLink="/projects/{{contract.url}}/fn/{{i}}">{{elem.name}}</a>
       <span class="val bb_cell">{{elem.val}}</span>
     </div>
   </div>
