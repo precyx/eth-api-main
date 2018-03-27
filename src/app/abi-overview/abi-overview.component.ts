@@ -14,7 +14,7 @@ export class AbiOverviewComponent implements OnInit {
 
   project:Project;
   contract:Contract;
-  contract_abi:Array<object>;
+  contract_abi:any;
 
   /* filters */
   active_filter:string = "";
@@ -80,7 +80,7 @@ export class AbiOverviewComponent implements OnInit {
     filterByToken():void{
       this.active_filter = "token";
       this.getContractAbi();
-      var filtered:Array<any> = this.contract_abi.filter(
+      var filtered:any = this.contract_abi.filter(
         elem => elem.name == "ownsAll" ||
                 elem.name == "tokensOfOwner" ||
                 elem.name == "owner" ||

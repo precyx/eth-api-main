@@ -24,19 +24,60 @@
           <p *ngIf="loading">loading...</p>
         </div>
 
+        <!-- loop ui -->
         <div class="loop_check">
           <label for="loop_checkbox">Enable Loop</label>
           <input type="checkbox" name="check_loop" id="loop_checkbox" [(ngModel)]="checkLoop">
         </div>
+        <div class="loopMode" *ngIf="checkLoop">
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              [(ngModel)]="loopInterval"
+              id="loop_interval"
+              placeholder="Loop Interval"
+              name="loop_interval">
+          </mat-form-field>
+          <div class="btn color_btn violet api_btn"
+               (click)="clickButton()"
+               [ngClass]="{'loading':loading}">
+            <p *ngIf="!loading">{{abi_function.name}}</p>
+            <p *ngIf="loading">loading...</p>
+          </div>
+        </div>
 
-        <mat-form-field class="example-full-width" *ngIf="checkLoop">
-          <input
-            matInput
-            [(ngModel)]="loopInterval"
-            id="loop_interval"
-            placeholder="Loop Interval"
-            name="loop_interval">
-        </mat-form-field>
+        <!-- batch ui -->
+        <div class="batch_check">
+          <label for="batch_checkbox">Enable Batch</label>
+          <input type="checkbox" name="check_batch" id="batch_checkbox" [(ngModel)]="checkBatch">
+        </div>
+        <div class="batchMode" *ngIf="checkBatch">
+          <mat-form-field class="example-full-width" >
+            <input
+              matInput
+              [(ngModel)]="batchStartVal"
+              id="batch_startval"
+              placeholder="Start Number"
+              name="batch_startval">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" *ngIf="checkBatch">
+            <input
+              matInput
+              [(ngModel)]="batchEndVal"
+              id="batch_endval"
+              placeholder="End Number"
+              name="batch_endval">
+          </mat-form-field>
+          <div class="btn color_btn green api_btn"
+               (click)="clickBatchRequest()"
+               [ngClass]="{'loading':loading}">
+            <p *ngIf="!loading">{{abi_function.name}}</p>
+            <p *ngIf="loading">loading...</p>
+          </div>
+        </div>
+
+
+
 
       </div>
       <div class="column c50">
@@ -62,8 +103,12 @@
         </mat-form-field>
 
         <div class="output_field" id="output_{{abi_function.name}}">
-          <span class="no_output" *ngIf="!output">No output yet!</span>
-          <div class="logs" [innerHTML]="output"></div>
+          <span class="no_output" *ngIf="!outputs.length">No output yet!</span>
+          <div class="log" *ngFor="let log of outputs.reverse()">
+            <span class="time">{{log.t2}}</span>
+            <span class="param1">[{{log.param1}}]</span>
+            <span class="val">{{log.val}}</span>
+          </div>
         </div>
 
 
