@@ -107,18 +107,16 @@ export class AbiDetailFunctionComponent implements OnInit {
   clickButton():void {
     //this.output = "...";
     this.loading = true;
-    console.log(this.abi_function);
-    var API = this.web3API;
+    var API               = this.web3API;
     var abi_function_name = this.abi_function.name;
-    var params = Object.values(this.params);
-    console.log("Params",this.params);
+    var params            = Object.values(this.params);
     var that = this;
-    //params.push(handlerFunction);
-    console.log(API);
-    API.methods[abi_function_name]().call().then(function(res){
-      console.log("res",res);
+    // no params
+    console.log(API.methods[abi_function_name]);
+    API.methods[abi_function_name].apply(this,params).call().then(function(res){
       that.parseData.apply(that, [res]);
     });
+
   }
 
   parseData(res){
@@ -128,7 +126,7 @@ export class AbiDetailFunctionComponent implements OnInit {
     if(out.constructor === Array) out = JSON.stringify(out);
     var t = new Date();
     var t2 = ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2) + ":" + ("0" + t.getSeconds()).slice(-2);
-    this.output += "\n" + out + " : " + t2;
+    this.output += "<br>" + out + " : " + t2;
     //
     this.loading = false;
     var that = this;

@@ -47,6 +47,11 @@
        [ngClass]="{'active' : checkActiveFiler('nonconstant')}">
     Non Constant
   </div>
+  <div class="ghost_btn mini filter_btn btn"
+       (click)="filterByConstant()"
+       [ngClass]="{'active' : checkActiveFiler('constant')}">
+    Constant
+  </div>
 </div>
 
 

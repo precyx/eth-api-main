@@ -80,18 +80,14 @@ export class AbiOverviewComponent implements OnInit {
     filterByToken():void{
       this.active_filter = "token";
       this.getContractAbi();
-      var filtered:Array<object> = [];
-      for(var i = this.contract_abi.length-1; i>=0; i--){
-        var elem:any = this.contract_abi[i];
-        //
-        if(elem.name == "ownsAll" ||
-           elem.name == "tokensOfOwner" ||
-           elem.name == "owner" ||
-           elem.name == "paused" ||
-           elem.name == "totalSupply" ||
-           elem.name == "ownsAll"
-         ) {filtered.push(elem); continue}
-      }
+      var filtered:Array<any> = this.contract_abi.filter(
+        elem => elem.name == "ownsAll" ||
+                elem.name == "tokensOfOwner" ||
+                elem.name == "owner" ||
+                elem.name == "paused" ||
+                elem.name == "totalSupply" ||
+                elem.name == "ownsAll"
+      );
       this.contract_abi = filtered;
     }
 
@@ -103,28 +99,31 @@ export class AbiOverviewComponent implements OnInit {
     filterByEvent():void{
       this.active_filter = "event";
       this.getContractAbi();
-      var filtered:Array<object> = [];
-      for(var i = this.contract_abi.length-1; i>=0; i--){
-        var elem:any = this.contract_abi[i];
-        //
-        if(!elem.type) {continue}
-        if(elem.type == "event") {filtered.push(elem); continue}
-      }
+      var filtered:Array<object> = this.contract_abi.filter(
+        elem => elem.type == "event"
+      )
       this.contract_abi = filtered;
     }
 
     filterByNonConstant():void {
       this.active_filter = "nonconstant";
       this.getContractAbi();
+      var filtered:Array<object> = this.contract_abi.filter(
+        elem => !elem.constant &&
+                elem.type != "event"
+      )
+      this.contract_abi = filtered;
+    }
+
+    filterByConstant():void {
+      this.active_filter = "constant";
+      this.getContractAbi();
       var filtered:Array<object> = [];
-      for(var i = this.contract_abi.length-1; i>=0; i--){
-        var elem:any = this.contract_abi[i];
-        //
-        if(elem.type){
-          if(elem.type == "event"){continue}
-        }
-        if(!elem.constant) {filtered.push(elem); continue}
-      }
+      var filtered:Array<object> = this.contract_abi.filter(
+        elem => elem.constant &&
+                elem.inputs &&
+                elem.inputs.length > 0
+      );
       this.contract_abi = filtered;
     }
 
