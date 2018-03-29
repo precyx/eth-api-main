@@ -39,11 +39,16 @@
 .argument.id {max-width: 50px; min-width: 20px;}
 
 /* output */
-.output_field {border: 1px solid #e6e6e6; border-radius: 8px; padding: 15px; width: auto; display: inline-flex; align-items: left; flex-flow: column; background: white;}
+.output_field {border: 1px solid #e6e6e6; border-radius: 8px; padding: 15px; width: auto; display: block; overflow: hidden; align-items: left; flex-flow: column; background: white;}
 .no_output {font-size: 12px; font-style: italic; color: #929292;}
 .output_field .log {display: flex; align-items: center;}
 .output_field .param1 {user-select: none; font-size: 12px; color: darkgrey; margin-right: 10px;}
-.output_field .time {user-select: none; font-size: 12px; color: darkgrey; margin-right: 10px;}
+.output_field .time {font-size: 12px; color: darkgrey; margin-right: 10px;}
+.output_field.fullscreen {display: inline-flex; position: absolute; left: 20px; width: calc(100vw - 60px); top: 80px;}
+
+/* output_btn_bar */
+.output_btn_bar {display: flex; margin-bottom: 5px; }
+.output_btn_bar .btn {color: #1c92e8; margin-right: 5px; font-size: 10px; font-weight: bold; text-transform: uppercase; cursor: pointer; user-select: none;}
 
 .partSubType {}
 .partSubType.p1 .gg {content: ""; width:15px; height: 15px; border-radius: 50%; background:blue;}

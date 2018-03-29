@@ -39,6 +39,10 @@ export class AbiDetailFunctionComponent implements OnInit {
   i_a:number = 0;
   i_b:number = 0;
 
+  /* output */
+  fullscreenOutputFlag:boolean = false;
+  timeOutputFlag:boolean = true;
+  paramsOutputFlag:boolean = true;
 
   constructor(
     private _ngZone: NgZone,
@@ -48,18 +52,48 @@ export class AbiDetailFunctionComponent implements OnInit {
   ngOnInit() {
   }
 
+  clearOutput():void {
+    this.outputs = [];
+  }
+
+  toggleFullscreenOutput():void {
+    this.fullscreenOutputFlag = !this.fullscreenOutputFlag;
+  }
+
+  toggleTimeOutput():void {
+    this.timeOutputFlag = !this.timeOutputFlag;
+  }
+  toggleParamsOutput():void {
+    this.paramsOutputFlag = !this.paramsOutputFlag;
+  }
+
+
   clickBatchRequest():void {
+    //if(this.loading) return;
     this.loading = true;
     var API               = this.web3API;
     var abi_function_name = this.abi_function.name;
     var that = this;
     //
     this.batchStartVal;
+    var arr = [];
+    var promises = [];
     for(let i = this.batchStartVal; i <= this.batchEndVal; i++){
-      API.methods[abi_function_name].apply(this, [i]).call().then(function(res){
-        that.parseData.apply(that, [res, i]);
+      let p = new Promise(function(resolve, reject){
+        API.methods[abi_function_name].apply(this, [i]).call().then(function(res){
+          let p = new Promise(function(resolve){});
+          arr[i] = {val:res, param1: i};
+          resolve();
+        });
       });
+      promises.push(p);
     }
+    Promise.all(promises).then(function(){
+      arr.reverse();
+      arr.forEach(function(elem){
+        that.parseData(elem.val, elem.param1);
+      });
+    });
   }
 
   /**
@@ -68,7 +102,7 @@ export class AbiDetailFunctionComponent implements OnInit {
    * @refactoring
    */
   clickButton():void {
-    //this.output = "...";
+    //if(this.loading) return;
     this.loading = true;
     var API               = this.web3API;
     var abi_function_name = this.abi_function.name;
@@ -93,7 +127,7 @@ export class AbiDetailFunctionComponent implements OnInit {
     output.t = new Date();
     output.t2 = ("0" + output.t.getHours()).slice(-2) + ":" + ("0" + output.t.getMinutes()).slice(-2) + ":" + ("0" + output.t.getSeconds()).slice(-2);
     output.param1 = param1;
-    this.outputs.push(output);
+    this.outputs.unshift(output);
     // handle loading
     this.loading = false;
     var that = this;

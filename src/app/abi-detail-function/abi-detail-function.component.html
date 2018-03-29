@@ -88,6 +88,7 @@
           </div>
         </div>
 
+
         <mat-form-field class="example-full-width" *ngIf="false">
           <textarea
             [(ngModel)]="output"
@@ -102,12 +103,17 @@
           </textarea>
         </mat-form-field>
 
-        <div class="output_field" id="output_{{abi_function.name}}">
+        <div class="output_field" id="output_{{abi_function.name}}" [ngClass]="{'fullscreen':fullscreenOutputFlag}">
+          <div class="output_btn_bar">
+            <div class="btn" (click)="clearOutput()">Clear</div>
+            <div class="btn" (click)="toggleFullscreenOutput()">Fullscreen</div>
+            <div class="btn" (click)="toggleTimeOutput()">Time</div>
+            <div class="btn" (click)="toggleParamsOutput()">Params</div>
+          </div>
           <span class="no_output" *ngIf="!outputs.length">No output yet!</span>
-          <div class="log" *ngFor="let log of outputs.reverse()">
-            <span class="time">{{log.t2}}</span>
-            <span class="param1">[{{log.param1}}]</span>
-            <span class="val">{{log.val}}</span>
+          <div class="log" *ngFor="let log of outputs">
+            <span class="time" *ngIf="timeOutputFlag">{{log.t2}}</span>
+            <span class="val"><span class="param1" *ngIf="paramsOutputFlag">[{{log.param1}}]</span>{{log.val}}</span>
           </div>
         </div>
 

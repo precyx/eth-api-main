@@ -1,0 +1,41 @@
+
+/* axies */
+.axies {background: white; padding: 20px; box-shadow: 0 2px 2px #00000024; border-radius: 8px;}
+.axie {display: flex; align-items: center; padding:0 8px;    border-bottom: 1px solid #e2e2e2;}
+.axie> div {}
+.axie .id {font-size: 12px; font-weight: bold; color: grey; width:50px;}
+.axie .timestamp {font-size: 10px; color: grey; display: none;}
+.axie .gene {display: flex; font-size: 12px; line-height: 20px;}
+.axie .subgene {margin-right: 5px; color: white; padding: 5px;}
+.axie .sub1 {color: grey; }
+.axie .sub2 {color: grey; }
+.axie .sub3 {color: grey; }
+
+.axie .subgene.c_2e5dca {color: #2e5dca;}
+.axie .subgene.c_db8aae {color: #db8aae;}
+.axie .subgene.c_ab88a9 {color: #ab88a9;}
+.axie .subgene.c_b80919 {color: #b80919;}
+.axie .subgene.c_92a7db {color: #92a7db;}
+.axie .subgene.c_2d9ed6 {color: #2d9ed6;}
+.axie .subgene.c_b88af2 {color: #b88af2;}
+.axie .subgene.c_82911b {color: #82911b;}
+.axie .subgene.c_98b7a2 {color: #98b7a2;}
+.axie .subgene.c_00a76a {color: #00a76a;}
+.axie .subgene.c_8dbd4f {color: #8dbd4f;}
+.axie .subgene.c_da7030 {color: #da7030;}
+.axie .subgene.c_da304e {color: #da304e;}
+.axie .subgene.c_b9348f {color: #b9348f;}
+.axie .subgene.c_812eca {color: #812eca;}
+.axie .subgene.c_353535 {color: #353535;}
+
+
+/* 7359c3 c748b8 */
+
+
+/* search box */
+.searchbox {margin-bottom: 20px;}
+.subgene_searchbox {margin-bottom: 20px;}
+
+/* general */
+h1 {display: flex;}
+.count {color: rgba(200,200,200); font-size: 12px; font-weight: normal; margin-left: 10px;}

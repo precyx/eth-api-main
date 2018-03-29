@@ -54,6 +54,7 @@ export class AbiDetailComponent implements OnInit {
   initWeb3():void{
     var web3     = this.web3Service.getWeb3();
     var web3API  = new web3.eth.Contract(this.contract.abi, this.contract.address);
+    console.log(web3API);
     this.web3API = web3API;
   }
 

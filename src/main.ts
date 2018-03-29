@@ -24,7 +24,10 @@ window.addEventListener('load', function() {
   }
   web3.eth.defaultAccount = web3.eth.accounts[0];*/
 
-  window.web3 = new Web3(Web3.givenProvider);
+  //window.web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+  //window.web3 = new Web3(Web3.givenProvider || 'http://localhost:8545');
+  window.web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/kMogkVTqBa2OEdnAip8D"));
+  // || Web3.givenProvider
   //console.log(Web3);
 
   platformBrowserDynamic().bootstrapModule(AppModule)

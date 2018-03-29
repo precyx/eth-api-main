@@ -1,0 +1,37 @@
+<h1>Axie Gene Lab <p class="count">({{axies.length}})</p></h1>
+
+<div class="searchbox">
+  <input type="text" name="" value="" [(ngModel)]="searchval">
+  <button type="button" name="button" (click)="search()">Search Gene</button>
+  <button type="button" name="button" (click)="resetSearch()">X</button>
+</div>
+
+<div class="subgene_searchbox">
+  <input type="text" name="" value="" [(ngModel)]="subgene1.val">
+  <input type="text" name="" value="" [(ngModel)]="subgene2.val">
+  <input type="text" name="" value="" [(ngModel)]="subgene3.val">
+  <button type="button" name="button" (click)="searchSubgene()">Search Subgene</button>
+  <button type="button" name="button" (click)="resetSearch()">X</button>
+</div>
+
+<div class="axies">
+  <div class="axie" *ngFor="let axie of axies">
+    <div class="id">
+      {{axie.id}}
+    </div>
+    <div class="gene">
+      <div class="subgene sub1 c_{{axie.subgene1_color}}">
+        {{axie.gene | slice:subgene1.start:subgene1.end }}
+      </div>
+      <div class="subgene sub2">
+        {{axie.gene | slice:subgene2.start:subgene2.end }}
+      </div>
+      <div class="subgene sub3">
+        {{axie.gene | slice:subgene3.start:subgene3.end }}
+      </div>
+    </div>
+    <div class="timestamp">
+      {{axie.timestamp}}
+    </div>
+  </div>
+</div>

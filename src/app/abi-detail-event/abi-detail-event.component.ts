@@ -6,6 +6,7 @@ import { SafeUrlPipe }              from '../shared/security/safe-url.pipe';
 
 import { TimeagoService }           from '../services/timeago.service';
 
+
 declare var window:any;
 declare var web3:any;
 
@@ -57,6 +58,9 @@ export class AbiDetailEventComponent implements OnInit {
       console.log("err, ", err);
       console.log("res, ", res);
       if(!err) that.parseEventResult(res);
+    });
+    API.events[abi_fn]({}).get(function(err,res){
+      console.log(err,res);
     });
      /*var Event = API[abi_fn]();
      console.log(Event);

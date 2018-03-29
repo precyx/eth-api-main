@@ -28,6 +28,7 @@ import { SafeUrlPipe }                from './shared/security/safe-url.pipe';
 import { TimeagoService }             from './services/timeago.service';
 import { KikoTitlebarComponent } from './kiko-titlebar/kiko-titlebar.component';
 import { BlockExplorerComponent } from './block-explorer/block-explorer.component';
+import { AxieGeneLabComponent } from './axie-gene-lab/axie-gene-lab.component';
 
 
 
@@ -53,7 +54,8 @@ import { BlockExplorerComponent } from './block-explorer/block-explorer.componen
     DebugComponent,
     SafeUrlPipe,
     KikoTitlebarComponent,
-    BlockExplorerComponent
+    BlockExplorerComponent,
+    AxieGeneLabComponent
   ],
   imports: [
     BrowserModule,
